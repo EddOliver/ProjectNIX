@@ -9,6 +9,7 @@ Descripcion del proyecto
 * [Introduction](#introduction)
 * [Materials](#materials)
 * [Connection Diagrams](#connection-diagrams)
+* [AWS Setup](#aws-setup)
 * [Grove AI Hat Setup](#grove-ai-hat-setup)
 * [RaspberryPi Setup](#raspberrypi-setup)
 * [Webpage Setup](#webpage-setup)
@@ -69,9 +70,196 @@ System Connection:
 
 <img src="Esquema completo" width="800">
 
+# AWS Setup:
+
+AWS works through roles, these roles are credentials that we create so that the services can communicate with each other, in order to carry out all our integration we need to create a role that allows the effective transmission of all services, therefore that will be the first thing To make.
+
+Note: always start here when doing a project with AWS.
+
+## IAM:
+
+- Enter the IAM console.
+
+<img src="https://i.ibb.co/CHBndXs/image.png" width="1000">
+
+- Enter through the role tab and click "Create role".
+
+<img src="https://i.ibb.co/1fm8rhr/image.png" width="1000">
+
+- Create a role focused on the IoT platform.
+
+<img src="https://i.ibb.co/42Vv4dY/image.png" width="1000">
+
+- Press next till review.
+
+<img src="https://i.ibb.co/f22SfJ0/image.png" width="1000">
+
+- Now we have to add the additional permissions to the Role, in the roles tab enter the role we just created and press the Attach policies button.
+
+<img src="https://i.ibb.co/z5kVpXR/image.png" width="1000">
+
+- Inside policies add the following:
+
+  - AmazonDynamoDBFullAccess
+  - AmazonS3FullAccess
+
+<img src="https://i.ibb.co/7r0KcNJ/image.png" width="1000">
+
+- Once that is finished, now we can start configuring the Rule within AWS IoT Core.
+
+# IoT Things:
+
+Since we have all our platform ready, we have to create the accesses to communicate with it. 
+
+- First we have to access our AWS console y look for the IoT core service:
+
+<img src="https://i.ibb.co/KVbtQLR/image.png" width="600">
+
+- Obtain your AWS endpoint, save it.
+
+<img src="https://i.ibb.co/ZYwrdfR/image.png" width="600">
+
+- In the lateral panel select the "Onboard" option and then "Get started".
+
+<img src="https://i.ibb.co/gmKxc7P/image.png" width="600">
+
+- Select "Get started".
+
+<img src="https://i.ibb.co/XSxSxbF/image.png" width="600">
+
+- At "Choose a platform" select "Linux/OSX", in AWS IoT DEvice SDK select "Python" and then click "Next".
+
+<img src="https://i.ibb.co/JR69Fdd/image.png" width="600">
+
+- At Name, write any name, then click on "Next step".
+
+<img src="https://i.ibb.co/NNLqqM0/image.png" width="600">
+
+- At "Download connection kit for" press the button "Linux/OSX" to download the credential package (which we will use later) and click on "Next Step".
+
+<img src="https://i.ibb.co/RHVTRpg/image.png" width="600">
+
+- Click "Done".
+
+<img src="https://i.ibb.co/N9c8jbG/image.png" width="600">
+
+- Click "Done".
+
+<img src="https://i.ibb.co/DtBxq0k/image.png" width="600">
+
+- On the lateral bar, inside the Manage/Things section we can see our thing already created. Now we have to set up the policy of that thing for it to work without restrictions in AWS.
+
+<img src="https://i.ibb.co/dQTFLZY/image.png" width="600">
+
+- At the lateral bar, in the Secure/Policies section we can see our thing-policy, click on it to modify it:
+
+<img src="https://i.ibb.co/jThNgtc/image.png" width="600">
+
+- Click on "Edit policy document".
+
+<img src="https://i.ibb.co/gV0tMtf/image.png" width="600">
+
+Copy-paste the following text in the document and save it.
+
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Action": "iot:*",
+        "Resource": "*"
+        }
+    ]
+    }
+
+<img src="https://i.ibb.co/ydtTqB2/image.png" width="600">
+
+## DynamoDB
+
+This is how to configure the Rules to connect the rest of AWS services.
+
+Link: https://www.onsemi.com/pub/Collateral/AND9831-D.PDF
+
+- Once we receive the data to our AWS IoT Core, we will configure the Rules to connect the following services.
+
+<img src="https://i.ibb.co/zhzZXGh/Create.png" width="1000">
+
+- Set any name for the Rule.
+
+<img src="https://i.ibb.co/Rj05MW5/image.png" width="1000">
+
+- In the SQL Query we will place our topic.
+
+<img src="https://i.ibb.co/6W5F115/Screen-Shot-2020-05-05-at-17-20-52.png" width="1000">
+
+- The first rule we are going to create will be to save all the data in a DynamoDB.
+
+<img src="https://i.ibb.co/nRm3WNy/image.png" width="1000">
+
+- Press "Create a new resource" to create the table where we will save the data.
+
+<img src="https://i.ibb.co/Hn4TYS2/image.png" width="1000">
+
+- For our table we will use the following parameters, I suggest that you use these specifically, since at production level all the device numbers will be different and in the "Time" column we are going to implement a special TIMESTAMP function.
+
+<img src="https://i.ibb.co/ZWR8GcG/image.png" width="1000">
+
+- Once the resource is created we return to:
+
+<img src="https://i.ibb.co/qWTw8Kx/image.png" width="1000">
+
+The Sort Key value special function is:
+
+    ${parse_time("yyyy.MM.dd G 'at' HH:mm:ss z", timestamp() )}
+
+- Once this is finished, we will have finished the first rule. In this case, because the rule for the lambda uses a different SQL query, we will no longer add any more actions to this rule.
+
+## S3:
+
+Deberemos crear un bucket de S3 que nos sevrira como almacenamiento de los datos de los sensores y como hosting de la pagina web.
+
+<img src="https://i.ibb.co/8r1mTKV/Screen-Shot-2020-05-05-at-16-55-49.png" width="1000">
+
+Los nombres de todos los buckets en AWS son unicos y exclusivos, asi que intenta primero con nombres sencillos y luego aumentales la complejidad si no estan disponibles. 
+
+En nuestro caso se llama: menopause-hackster
+
+<img src="https://i.ibb.co/k27BWwf/Screen-Shot-2020-05-05-at-17-02-19.png" width="1000">
+
+Ahora tenemos que configurar el acceso publico del bucket para poder acceder a los datos desde la pagina web y el acceso de CORS para poder llamar los datos por API.
+
+Configuramos el acceso publico del bucket de esta forma:
+
+<img src="https://i.ibb.co/rZgR3hN/Screen-Shot-2020-05-05-at-17-05-14.png" width="1000">
+
+Policy:
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowPublicReadAccess",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::YOURBUCKETNAME/*"
+            }
+        ]
+    }
+
+Habilitamos el acceso del CORS de la siguiente forma:
+
+<img src="https://i.ibb.co/zZCLFsc/Screen-Shot-2020-05-05-at-17-05-27.png" width="1000">
+
+La action que vamos a crear para que los datos leidos por los sensores lleguen al S3 sera la siguiente.
+
+<img src="https://i.ibb.co/QrNH8D2/Screen-Shot-2020-05-05-at-17-22-20.png" width="1000">
+
 # Grove AI Hat Setup:
 
-## Grove AI hat Install Dependencies:
+## Grove AI hat prerequisites:
+
+NOTA: Utilizamos el Grove AI Hat debido a que no contabamos con el shield Grove de raspberry y teniamos este a la mano, sin embargo ahorro tiempo de programacion de la RaspberryPi ya que teniamos experiencia trabajando con este shield.
 
 Configure the Arduino Board Manager URL.
 
@@ -104,532 +292,145 @@ Open the demo at Sketch → Include Library → Add .ZIP Library...
 
 <img src="https://i.ibb.co/bB7FnbW/Captura.png" width="800">
 
-Añade las dos librerias en la carpeta de Arduino/Libraries
+Añade las dos librerias en la carpeta de Arduino/Libraries. Especificamente ambas estan diseñadas para hacer funcionar los sensores con esta board.
 
+- ADS1115-master.zip
+- DHT_sensor_library.zip
 
+<img src="https://i.ibb.co/JvM9jjB/Screen-Shot-2020-05-04-at-22-47-06.png" width="800">
 
+Abre el archivo Arduino/Msensors/Msensors.ino y si toda la instalacion funciono correctamente, deberas ver una ventana de compilacion correcta.
 
-## Jetson SD card Setup:
+<img src="https://i.ibb.co/hRrhtN1/Capturla.png" width="800">
 
-This is the explanation on how to install the Jetson SDK OS image on an SD card. You will need a computer with an SD card reader to install the image.
+## Communicating the shield with the Raspberry Pi:
 
-We recommend downloading the latest version of the SDK, in this guide I use version 4.3.0 (most recent to date).
+Comunicar el shield con la raspberry pi fue un poco laborioso debido a los siguientes factores:
 
-Official Link: https://developer.nvidia.com/embedded/jetpack
+- Los puertos seriales de la raspberry y el Hat estan en conectados Tx -> Tx y Rx -> Rx.
+- El puerto I2C de ambos esta correctamente conectado pero ya que el sensor Analogico requiere I2C en el Hat como Master, no podiamos comunicarlo con la raspberry que solo puede funcionar como master.
+- La comunicacion de SPI la utiliza el micro controlador para programarse, asi que tampoco era una opcion.
 
-You'll need to unzip the file to get the image file (.img) to write to your SD card. If you do not have a program to unzip, I recommend any of the following according to your operating system (windows in my case).
+Sin embargo la Raspberry y el Microcontrolador comprarten casi todos los pines como se puede ver en la imagen.
 
-7-Zip (Windows):
+<img src="https://i.ibb.co/NpWY8Fj/Screen-Shot-2020-05-04-at-23-00-24.png" width="800">
 
-https://www.7-zip.org/
+Asi que se nos ocurrio crear un protocolo donde los datos se pasaran de manera paralela del Hat a la Raspberry, lo decidimos llamar paralax, ya que el hat es un shield, solo hace falta programarlos, en los codigos del Hat y de la Raspberry ya realizamos la programacion correspondiente, sin embargo asi estan conectados por software.
 
-The Unarchiver (Mac):
+| HAT | Direction | RPI |
+| ---| ---------  |---  |
+| 25 | -------->  | 7   |
+| 33 | -------->  | 19  |
+| 31 | -------->  | 4   |
+| 30 | -------->  | 17  |
+| 19 | -------->  | 27  |
+| 9  | -------->  | 26  |
+| 28 | -------->  | 10  |
+| 26 | -------->  | 9   |
+| 27 | -------->  | 11  |
+| 13 | -------->  | 5   |
+| 14 | -------->  | 6   |
+| 22 | -------->  | 23  |
+| 21 | -------->  | 24  |
+| 10 | <--------  | 16  |
 
-https://theunarchiver.com/
+Cada vez que el pin 16 de la raspberry manda un 1, el microcontrolador manda toda la informacion a la raspberry de forma paralela y la almacena en 3 variables.
 
-Unzip (Linux):
+# RaspberryPi Setup:
 
-https://linuxize.com/post/how-to-unzip-files-in-linux/
+## RaspberryPi prerequisites:
 
-<img src="https://i.ibb.co/tx4ZSpb/image.png" width="600">
+Download the operating system of the Raspberry Pi Zero.
 
-## Format your SD.
+- To download the operating system of the Raspberry enter the following link:
+- Link: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2019-04-09/2019-04-08-raspbian-stretch-lite.zip
+- Download this version.
 
-Windows and Mac:
+Flash the operating system in the SD.
 
-https://www.sdcard.org/downloads/formatter/index.html
+Software: https://www.balena.io/etcher/
 
-Linux:
+- Through Etcher flash the raspberry operating system but DO NOT put it inside the raspberry yet.
 
-https://www.pcworld.com/article/3176712/how-to-format-an-sd-card-in-linux.html
+Create a wpa_supplicant for the connection of the raspberry to the internet.
 
-My computer does not have an SD card reader so I use this external one (any reader is ok).
+- Since you have flashed the operating system, copy and paste the files from the "RaspberryPiFiles" folder directly into the SD card.
+- Then open the "wpa_supplicant.conf" file with a text editor
+- In between the quotes in the ssid line write your wifi network and in psk the network key.
 
-<img src="https://i.ibb.co/drrQkgs/20200125-180653.jpg" width="600">
+        country = us
+        update_config = 1
+        ctrl_interface =/var/run/wpa_supplicant
 
-And this is the software for the SD card formatter. I especially like this program because this type of operating system creates multiple partitions in the SD memory and the format of them can be complicated if we want to reformat later, however this program does everything automatically.
-
-<img src="https://i.ibb.co/yQ0mmc1/image.png" width="400">
-
-## Flash the sd card with the OS
-
-You will need to use an image writing tool to install the image you have downloaded on your SD card. I recommend balenaEtcher as it works on all OSs and it is not necessary to unzip the .zip to perform the OS flash.
-
-Download Link: https://www.balena.io/etcher/
-
-<img src="https://i.ibb.co/TWMH7FM/image.png" width="600">
-
-Once the process is completed correctly, we see the following message.
-
-<img src="https://i.ibb.co/zJSdVG4/image.png" width="600">
-
-### Jetson OS Setup:
-
-Insert the SD into the SD slot of the Jetson Nano.
-
-<img src="https://i.ibb.co/YPKS7QF/Slot.png" width="600">
-
-Connect the Jetson Nano to the screen using the HDMI cable, connect the wireless keyboard receiver, connect the network card and connect the power supply.
-
-<img src="https://i.ibb.co/NY3t4pc/Hardwaresetup.png" width="600">
-
-We will configure the operating system, it is very simple.
-
-* Accept the terms.
-
-<img src="https://i.ibb.co/5T55mgJ/20200126-015446.jpg" width="600">
-
-* Select your language.
-
-<img src="https://i.ibb.co/MSBkGmV/20200126-015511.jpg" width="600">
-
-* Select your keyboard layout.
-
-<img src="https://i.ibb.co/W5TGWtH/20200126-015531.jpg" width="600">
-
-* Configure your wifi.
-
-<img src="https://i.ibb.co/KFB4wC3/20200126-015605.jpg" width="600">
-
-* Select your region.
-
-<img src="https://i.ibb.co/F6q0vv9/20200126-015658.jpg" width="600">
-
-* Select your credentials.
-
-**SUPER IMPORTANT NOTE: CHECK THE OPTION "Log in Automatically"**
-
-<img src="https://i.ibb.co/9Vw9f9H/20200126-015742.jpg" width="600">
-
-* Click ok to expand your Partition Size.
-
-<img src="https://i.ibb.co/NmC0XGn/20200126-015755.jpg" width="600">
-
-* Wait a couple of minutes.
-
-<img src="https://i.ibb.co/c89BKHk/20200126-015853.jpg" width="600">
-
-* If everything works, you will see a screen like this.
-
-<img src="https://i.ibb.co/Th0TXT5/image.png" width="1000">
-
-* This animation shows the final setup of the operating system.
-
-<img src="https://i.ibb.co/C2sh67K/ezgif-com-resize-2.gif" width="1000">
-
-* With this you should already have everything configured, from now on the HDMI cable and the wireless keyboard are no longer necessary. All programming and final setup will be done through SSH.
-
-## SSH Setup:
-
-For this step we will create an ssh connection with the Jetson, if you have Mac or Linux are already preconfigured with OpenSSH library, so you can start your connection from the terminal with the following command.
-
-    ssh -L 8000:localhost:8888 youruser@yourip
-
-In my case the command is:
-
-    ssh -L 8000:localhost:8888 vic@192.168.0.28
-
-**NOTE: it is also possible to activate this library in windows but I recommend using the instructions that I will show you next.**
-
-If you are a Windows user I recommend using the following program:
-
-https://www.putty.org/
-
-This animation shows how to configure Putty exactly as the last command.
-
-<img src="https://i.ibb.co/JnsH0Xn/ezgif-com-video-to-gif-3.gif" width="600">
-
-Taking the Putty console as example, clicking on connect will display the following message.
-
-<img src="https://i.ibb.co/bWfcnds/image.png" width="600">
-
-Click "Yes" to bring up the following window, as long as you do not format the Jetson OS it will not appear again, at this time it will ask for the password that we defined in the previous section.
-
-<img src="https://i.ibb.co/QHCLHSs/image.png" width="600">
-
-After inputting the password in the command console, this window will appear, indicating that we are already connected to the Jetson Nano.
-
-<img src="https://i.ibb.co/brWpyCW/image.png" width="600">
-
-## Libraries Setup:
-
-Once the wireless connection to the console is established, we will have to copy and paste the following commands into it and execute them.
-
-* Command to download the project and get all the necessary files for the project.
-
-        git clone https://github.com/altaga/Anaphylactic-Skin-Reaction-Detection-during-Chemotherapy
-
-* Command to enter the downloaded folder.
-
-        cd Anaphylactic-Skin-Reaction-Detection-during-Chemotherapy/Installer
-
-* This command will install all the libraries and configurations necessary to setup the project correctly. To facilitate its installation I'll make an .sh file that performs all this automatically, however I also attached the commands separately in [Apendix A](#apendix-a). Also the file can be reviewed by any text editor such as Notepad, Atom, VsCode, etc ...
-
-**NOTE: Go for a coffee, some cookies and see the next chapter of your favorite series, because this process can take 45 minutes to 2 hours to complete, depending on your internet connection.**
-
-        sudo bash Install.sh
-
-With this process we will have all the libraries installed correctly:
-
-* TensorFlow 2.0
-* Awscli (we haven't finished setup this library)
-* Numpy
-* Jupyter Notebook
-* PahoMQTT
-* OpenCV (No Contrib Version)
-
-Once this process has concluded, we have to check that the Jupyter notebook works correctly, as it will be our UI for the rest of the tutorial. Next, write the following command:
-
-    jupyter notebook
-
-You should see something like this in the terminal:
-
-<img src="https://i.ibb.co/YD0DMBs/image.png" width="600">
-
-Copy the token that appears and without closing the window go to a browser and on the address bar input:
-
-    localhost:8000
-
-You should get a window such as this one:
-
-<img src="https://i.ibb.co/Y8dkkrM/image.png" width="600">
-
-Paste the token you copied previously:
-
-<img src="https://i.ibb.co/LtkbFkF/image.png" width="600">
-
-If the token was valid we should have the Jetson files open on the browse, this is important because this window will allow us to manage the files easily, and allow us to execute the project's files.
-
-## AWS Jetson setup:
-
-First we have ti access our AWS console y look for the IoT core service:
-
-<img src="https://i.ibb.co/KVbtQLR/image.png" width="600">
-
-Obtain your AWS endpoint, save it because we will use it to setup the JEtson and the webpage.
-
-<img src="https://i.ibb.co/ZYwrdfR/image.png" width="600">
-
-In the lateral panel select the "Onboard" option and then "Get started".
-
-<img src="https://i.ibb.co/gmKxc7P/image.png" width="600">
-
-Select "Get started".
-
-<img src="https://i.ibb.co/XSxSxbF/image.png" width="600">
-
-In "Choose a platform" select "Linux/OSX", in AWS IoT DEvice SDK select "Python" and then click "Next".
-
-<img src="https://i.ibb.co/JR69Fdd/image.png" width="600">
-
-In Name write any name you'd like and then click on "Next step".
-
-<img src="https://i.ibb.co/NNLqqM0/image.png" width="600">
-
-In the section, "Download connection kit for" press the button "Linux/OSX" to download the credential package (which we will use later) and click on "Next Step".
-
-<img src="https://i.ibb.co/RHVTRpg/image.png" width="600">
-
-Click "Done".
-
-<img src="https://i.ibb.co/N9c8jbG/image.png" width="600">
-
-Click "Done".
-
-<img src="https://i.ibb.co/DtBxq0k/image.png" width="600">
-
-In the lateral bar, inside the Manage/Things section we can see our thing already created. Now we have to set up the policy of that thing for it to work without restrictions in AWS.
-
-<img src="https://i.ibb.co/dQTFLZY/image.png" width="600">
-
-In the lateral bar, in the Secure/Policies section we can see our thing-policy, click on it to modify it:
-
-<img src="https://i.ibb.co/jThNgtc/image.png" width="600">
-
-Click on "Edit policy document".
-
-<img src="https://i.ibb.co/gV0tMtf/image.png" width="600">
-
-Copy-paste the following text in the document and save it.
-
-    {
-    "Version": "2012-10-17",
-    "Statement": [
+        network =
         {
-        "Effect": "Allow",
-        "Action": "iot:*",
-        "Resource": "*"
+        scan_ssid = 1
+        ssid = "yourwifi"
+        psk = "yourpassword"
         }
-    ]
-    }
 
-<img src="https://i.ibb.co/ydtTqB2/image.png" width="600">
 
-Once this is done, we will go to our pc and to the folder with the credentials previously downloaded and extract them.
+- We save the changes and remove the SD from the PC.
 
-<img src="https://i.ibb.co/mFKPxcY/image.png" width="600">
+We then place the SD in the raspberry and connect it to its power source.
 
-We enter the extracted folder and we will rename the files the following way:
+- The power source of a Raspberry Pi Zero is recommended to be from 5 volts to 1A minimum. We recommend the official ower supply for the Raspberry pi.
 
-    ThingNAME.cert.pem -> ThingCert.cert.pem
+Once the Raspberry has already started, we need to access it through SSH or with a keyboard and a monitor.
 
-    ThingNAME.private.key -> PrivateCert.private.key
+- If you want to access it through SSH we need your IP.
+- In order to analyze your network and obtain the number we will have to use one of the following programs.
+- Advanced IP Scanner (Windows) or Angry IP Scanner program (Windows, Mac and Linux).
+- In the following image you can see how we got the Raspberry IP.
 
-<img src="https://i.ibb.co/jzZqZHh/image.png" width="600">
+<img src="https://i.ibb.co/q9BM6dP/image.png"> 
 
-Now, with the files already renamed we will go to our Jupyter Notebook in the following route:
+Connect the raspberry with ssh.
 
-<img src="https://i.ibb.co/fN00K9G/image.png" width="600">
+- To connect using ssh to the raspberry we need the Putty program.
+- Link: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+- This program will let us access the command console of the raspberry.
+- In Linux, just open the terminal and put the following command.
 
-In the right corner there's a button that says "upload"
+        ssh pi@RASPBERRYIP
 
-<img src="https://i.ibb.co/jz27sTD/image.png" width="600">
+<img src="https://i.ibb.co/PxP86Xz/terminal.png">
 
-By clicking on it we are able to upload our two certificates to the folder.
+- Password: “raspberry”
 
-<img src="https://i.ibb.co/ggQ8hq1/image.png" width="600">
+<img src="https://i.ibb.co/QpWj18S/image.png">
 
-Click every single one of the blue colored "upload" buttons to finish the file upload.
+First, we will install the necessary libraries for our program to work.
 
-<img src="https://i.ibb.co/k6X04K2/image.png" width="600">
+- For it to work we just have to input the following command.
 
-By this point we should have all the necessary credentials.
+      sudo apt-get update
+      sudo apt-get install python3-pip libglib2.0-dev git -y
+      sudo pip3 install bluepy Crypto crc16 paho-mqtt
 
-## AWSCLI Setup:
+- Download the folder with our program
 
-This is the AWS library to manage and execute actions via Python for Cloud, so we have to set it up like so:
+       git clone https://github.com/EddOliver/ProjectNIX
 
-At the console we go to the IAM service.
 
-<img src="https://i.ibb.co/qk3LP62/image.png" width="600">
 
-In the Access Management/Users section we click on Add user.
 
-<img src="https://i.ibb.co/xMpKZWz/image.png" width="600">
 
-We type any username and we click on "Next:Permissions"
 
-<img src="https://i.ibb.co/qMcmJSt/image.png" width="600">
 
-Click "Attach existing polices directly", at the searchbar we write "S3" and we select the "AmazonS3FullAccess" policy.
 
-<img src="https://i.ibb.co/XYLz6DW/image.png" width="600">
 
-We click on "Next" until we reach the success screen, where we will see the Access Key ID and the Secret Access Key, both keys we have to save in order to set up the Awscli.
 
-<img src="https://i.ibb.co/kqmFzHg/image.png" width="600">
 
-From our Jupyter notebook UI at the "new" button open a new terminal.
 
-<img src="https://i.ibb.co/Tm0W9p4/image.png" width="600">
 
-Typoe the following command on it.
 
-    aws configure
 
-<img src="https://i.ibb.co/ZYJ0zPy/image.png" width="600">
 
-Configure the credentials the following way:
 
-    AWS Access Key ID [None]: YOUR ACCESS KEY ID
-    AWS Secret Access Key [None]: YOUR SECRET ACCESS KEY
-    Default region name [None]: us-east-1
-    Default output format [None]: json
 
-Ready! we have now configured the Jetson Nano.
 
-# Webpage Setup:
-
-## Aws Credentials Setup:
-
-Enter the AWS console and search for the "Cognito" service.
-
-<img src="https://i.ibb.co/nrF8P0W/image.png" width="600">
-
-Enter "Manage Identity Pools"
-
-<img src="https://i.ibb.co/Rh0mMQL/image.png" width="600">
-
-Enter "Manage Identity Pools"
-
-<img src="https://i.ibb.co/GMHB0d2/image.png" width="600">
-
-Enter "Create new identity pool"
-
-<img src="https://i.ibb.co/Rh0mMQL/image.png" width="600">
-
-Type any name at the pool and check "Enable access to unauthenticated identities" and click on "Create Pool"
-
-<img src="https://i.ibb.co/VJS43ff/Untitled-2.png" width="600">
-
-Just click "Allow".
-
-<img src="https://i.ibb.co/c3qgj5H/image.png" width="600">
-
-We just got our POOLID, save it as we will use it afterwards.
-
-<img src="https://i.ibb.co/xhBfqVk/image.png" width="600">
-
-Go to the AWS console and enter "IAM".
-
-<img src="https://i.ibb.co/qk3LP62/image.png" width="600">
-
-Inside the console enter the Role section, at the searchbar write "web" and enter in the one that says "Cognito_WebPagePoolUnauth_Role".
-
-<img src="https://i.ibb.co/r0kcdvz/image.png" width="600">
-
-Inside the Role we click on the Attach policies button to add the services we need for our webapp.
-
-<img src="https://i.ibb.co/vZdLsFj/image.png" width="600">
-
-Inside that window we need to add three services:
-
-* AmazonS3FullAccess
-* AWSIoTFullAccess
-* AmazonDynamoDBFullAccess
-
-<img src="https://i.ibb.co/mFY33w9/image.png" width="600">
-
-Now that we have the permissions required we part ways to configure the database where we will have the patient's information. From the AWS we will search for DynamoDB.
-<img src="https://i.ibb.co/W3MH7Zf/image.png" width="600">
-
-Select Create Table.
-
-<img src="https://i.ibb.co/k35HZ30/image.png" width="600">
-
-Create a table with the following parameters, it is important that the names are the same ones we are showing in the image.
-
-Name: HacksterDB
-Partition Key: PartKey
-Sort Key: SortKey
-
-<img src="https://i.ibb.co/dbFqpF6/image.png" width="600">
-
-Once the table is created we can generate registers on it about patients which we will be able to visualize on our platform, the registers have to follow the following structure.
-
-    {
-    "Age": "56",
-    "App": " 03/03/2020",
-    "Cancer": "Sarcoma",
-    "Comments": "Entrepreneur, if you don't have at least one TitanRTX on your computer, don't talk with him",
-    "Incidents": "1",
-    "Medicine": "Carboplatin",
-    "PartKey": "dev1",
-    "SortKey": "Jen-Hsun Huang"
-    }
-
-* Desciption of the registers:
-    * Age: age of the person
-    * App: Date of his following appointment
-    * Cancer: Type of Cancer
-    * Comments: Any comments of the specialist
-    * Incidents: Number of incidents to date.
-    * Medicine: Pharmacological treatments
-    * PartKey: The device that procures the register
-    * SortKey: Name of the patient
-
-Finally we will create an S3 bucket which will allow us to store any file or image we need. From the AWS console look for the S3 service.
-
-<img src="https://i.ibb.co/dtCKMBj/image.png" width="600">
-
-On S3 click the button to create a bucket.
-
-<img src="https://i.ibb.co/zstLq8T/image.png" width="600">
-
-Type any name for the bucket but remember it as we will call it back afterwards.
-
-<img src="https://i.ibb.co/PDmWFrs/image.png" width="600">
-
-Uncheck all the block options as in the image:
-
-<img src="https://i.ibb.co/FW4Fqbv/image.png" width="600">
-
-Once all that is finished, we have everything ready to setup our webapp.
-
-<img src="https://i.ibb.co/2ZP8mw0/image.png" width="600">
-
-Uncheck all the options to block as in the image:.
-
-<img src="https://i.ibb.co/FW4Fqbv/image.png" width="600">
-
-With this done we have created our bucket, with the following URL.
-
-    https://yourbucketname.s3.amazonaws.com/
-
-## Add credentials to the WebPage
-
-Download the Github file to your PC.
-
-<img src="https://i.ibb.co/Ksd8Y42/image.png" width="600">
-
-Inside the project folder go to: ReactAPP\src\views\examples.
-
-<img src="https://i.ibb.co/Xt0yFmm/image.png" width="600">
-
-With your favourite editor open the following files:
-
-* aws-configuration.js
-* MyCard.jsx
-* Card.jsx
-* Profile.jsx
-
-Inside aws-configuration.js paste our POOLID and our AWS Endpoint.
-
-<img src="https://i.ibb.co/tsYPQBw/image.png" width="600">
-
-Inside MyCard.jsx paste your bucket URL.
-
-<img src="https://i.ibb.co/TWscqmB/image.png" width="600">
-
-Inside Card.jsx paste your bucket URL.
-
-<img src="https://i.ibb.co/bbJdCPS/image.png" width="600">
-
-Inside Profile.jsx paste the name of the DB, if you named it "HacksterDB" you don't need to do anything else.
-
-<img src="https://i.ibb.co/HpsxRFp/image.png" width="600">
-
-To visualize the DB in a Navigator you need to install NodeJS in your computer.
-
-Link: https://nodejs.org/es/
-
-Once installed enter the folder of the project called "ReactAPP".
-
-<img src="https://i.ibb.co/NsHJj18/image.png" width="600">
-
-Once there, oper the terminal or in the case of windows cmd.
-
-NOTE: If you are using windows just type cmd on the search bar.
-
-<img src="https://i.ibb.co/F3b8GGd/ezgif-2-e535d3643141.gif" width="600">
-
-In the cmd or terminal write the next commmand.
-
-    npm install
-
-<img src="https://i.ibb.co/bgp4Ms6/image.png" width="600">
-
-After all the dependencies ave been installed, at the console write:
-
-    npm start
-
-<img src="https://i.ibb.co/SPdkwZL/ezgif-com-video-to-gif-2.gif" width="600">
-
-# Jupyter Notebook:
-
-### Final Setup:
-
-Enter the Jupyter notebook UI from the browser at "localhost:8000". The token should not longer be needed.
-
-<img src="https://i.ibb.co/LtkbFkF/image.png" width="600">
-
-Enter the "Anaphylactic-Skin-Reaction-Detection-during-Chemotherapy\Jupyter Notebook\Anaphylactic Skin Reaction Detection during Chemotherapy.ipynb" folder
-
-<img src="https://i.ibb.co/mSW4dFD/image.png" width="600">
-
-With everything set up we now enter the browser before performing the code revision we need to paste our Bucket name and AWS IoT Endpoint.
-
-<img src="https://i.ibb.co/wJdN3Bk/image.png" width="600">
+       
 
 # The Final Product:
 
