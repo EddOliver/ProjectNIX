@@ -37,6 +37,8 @@ https://www.seeedstudio.com/Grove-Temperature-Humidity-Sensor-DHT11.html
 https://www.amazon.com/dp/B06XWN9Q99/ref=cm_sw_em_r_mt_dp_U_XTllEbK0VKMAZ
 - 5V 3A Type-C USB AC/DC                               x1.
 https://www.amazon.com.mx/dp/B084KZRY7Q/ref=cm_sw_em_r_mt_dp_U_rOnSEbNV83B87
+- MiBand 3.                                            x1.
+https://www.amazon.com/dp/B07VSPQMNH/ref=cm_sw_em_r_mt_dp_U_y-ESEbC65R0BG
 
 // Hardware del dok
 
@@ -178,8 +180,6 @@ Copy-paste the following text in the document and save it.
 
 This is how to configure the Rules to connect the rest of AWS services.
 
-Link: https://www.onsemi.com/pub/Collateral/AND9831-D.PDF
-
 - Once we receive the data to our AWS IoT Core, we will configure the Rules to connect the following services.
 
 <img src="https://i.ibb.co/zhzZXGh/Create.png" width="1000">
@@ -266,7 +266,6 @@ Configure the Arduino Board Manager URL.
 Click File → Preference, copy the following URL into the Additional Boards Manager URLs
 
     https://raw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_seeeduino_boards_index.json
-
 
 <img src="https://files.seeedstudio.com/wiki/Grove-AI-HAT-for-Edge-Computing/img/wiki-Arduino-1.jpg" width="800">
 <img src="https://files.seeedstudio.com/wiki/Grove-AI-HAT-for-Edge-Computing/img/wiki-Arduino-2.jpg" width="800">
@@ -411,6 +410,8 @@ First, we will install the necessary libraries for our program to work.
 - Download the folder with our program
 
        git clone https://github.com/EddOliver/ProjectNIX
+
+Renombra los certificados que descargaste de la carpeta de AWS por "nix.private.key" y "nix.cert.pem" y colocalos en la carpeta "RaspberryScipt/Certs".
 
 
 
