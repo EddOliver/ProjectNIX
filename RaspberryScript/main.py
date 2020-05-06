@@ -97,18 +97,9 @@ def on_publish(client, obj, mid):
     print("Data Sent")
 
 def l(x):
-    global mqttc
     global hr
-    global lux
-    global tem
-    global hum
     hr=str(x)
-    print("HR: " + str(x))
-    temp='{"Device":"Device 1","hr":"'+hr+'","lux":"'+lux+'","temp":"'+tem+'","hum":"'+hum+'"}'
-    mqttc.publish("/data",temp)
-    time.sleep(10)
-    a = 1/0
-
+    
 def heart_beat():
     print("Body:")
     band.start_raw_data_realtime(heart_measure_callback=l)
@@ -153,8 +144,18 @@ while 1:
 
         print("Mqtt :Ok")
 
+        start = time.time()
         while rc == 0:
             rc = mqttc.loop()
+            if((time.time()-start) > 60):
+                start = time.time()
+                print("Enviroment:")
+                ReadSensors()
+                heart_beat()
+                print("Hr: "+ str(hr))
+                temp='{"Device":"Device 1","hr":"'+hr+'","lux":"'+lux+'","temp":"'+tem+'","hum":"'+hum+'"}'
+                mqttc.publish("/data",temp)
+                print("Wait " + str(60 -round(time.time()-start)) + " Seconds More")
             
         print("rc: " + str(rc))
         

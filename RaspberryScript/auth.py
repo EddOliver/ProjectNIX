@@ -374,13 +374,15 @@ class MiBand3(Peripheral):
             char_m = self.svc_heart.getCharacteristics(UUIDS.CHARACTERISTIC_HEART_RATE_MEASURE)[0]
             char_d = char_m.getDescriptors(forUUID=UUIDS.NOTIFICATION_DESCRIPTOR)[0]
             char_ctrl = self.svc_heart.getCharacteristics(UUIDS.CHARACTERISTIC_HEART_RATE_CONTROL)[0]
-
+            
             if heart_measure_callback:
                 self.heart_measure_callback = heart_measure_callback
             if heart_raw_callback:
                 self.heart_raw_callback = heart_raw_callback
             if accel_raw_callback:
                 self.accel_raw_callback = accel_raw_callback
+            if heart_measure_callback == None:
+                return
 
             char_sensor = self.svc_1.getCharacteristics(UUIDS.CHARACTERISTIC_SENSOR)[0]
 
@@ -398,13 +400,19 @@ class MiBand3(Peripheral):
             # WTF
             char_sensor.write(b'\x02')
             t = time.time()
-            while True:
+            one =1
+            two =0 
+            while one:
                 self.waitForNotifications(0.5)
                 self._parse_queue()
                 # send ping request every 12 sec
                 if (time.time() - t) >= 12:
+                    if(two):
+                        one=0
                     char_ctrl.write(b'\x16', True)
                     t = time.time()
+                    two = 1
+            return
 
     def stop_realtime(self):
             char_m = self.svc_heart.getCharacteristics(UUIDS.CHARACTERISTIC_HEART_RATE_MEASURE)[0]
