@@ -581,15 +581,15 @@ La curva se calcula con todos los datos de HR de entrada y se hace el calculo de
 
 - Aqui generamos de forma pseudo aleatoria 3 arreglos da datos que siguen las curvas ya antes mencionadas.
 
-<img src="https://i.ibb.co/822sQQ4/Screen-Shot-2020-05-07-at-1-21-58.png" width="400">
-<img src="https://i.ibb.co/5sMG2gb/Screen-Shot-2020-05-07-at-1-22-44.png" width="400">
-<img src="https://i.ibb.co/HPWxmQs/Screen-Shot-2020-05-07-at-1-23-25.png" width="400">
+<img src="https://i.ibb.co/822sQQ4/Screen-Shot-2020-05-07-at-1-21-58.png" width="500">
+<img src="https://i.ibb.co/5sMG2gb/Screen-Shot-2020-05-07-at-1-22-44.png" width="500">
+<img src="https://i.ibb.co/HPWxmQs/Screen-Shot-2020-05-07-at-1-23-25.png" width="500">
 
 - Si la pasamos por nuestro algoritmo podemos ver que nos dice que tipo de curva es y nos muestra la linea de tendencia, en este caso lo que nos importa para el algoritmo es el tipo de curva mas que la linea de tendencia.
 
-<img src="https://i.ibb.co/dtMpLWP/Screen-Shot-2020-05-07-at-1-26-01.png" width="400">
-<img src="https://i.ibb.co/8c0Sfsy/Screen-Shot-2020-05-07-at-1-26-12.png" width="400">
-<img src="https://i.ibb.co/pZ9MB1X/Screen-Shot-2020-05-07-at-1-26-21.png" width="400">
+<img src="https://i.ibb.co/dtMpLWP/Screen-Shot-2020-05-07-at-1-26-01.png" width="500">
+<img src="https://i.ibb.co/8c0Sfsy/Screen-Shot-2020-05-07-at-1-26-12.png" width="500">
+<img src="https://i.ibb.co/pZ9MB1X/Screen-Shot-2020-05-07-at-1-26-21.png" width="500">
 
 Ejemplo con datos reales de un HR en una noche:
 
