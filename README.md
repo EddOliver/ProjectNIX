@@ -443,7 +443,7 @@ Ya con esta preparacion lo utltimo que necesitamnos es obtener la MAC-Address de
 
 <img src="https://i.ibb.co/mC1fy47/5eb390c1bafde-1588826403-5eb390c1baf7d.png" width="1000">
 
-## Program features:
+## Raspberry software features:
 
 El programa que corre en la raspberry realiza las siguientes funciones:
 
@@ -497,6 +497,10 @@ Realizamos un algoritmo matematico que a travez de dar los valores registrados e
 
 <img src="https://i.ibb.co/4fQqxXW/Untitled-Diagram.png" width="1000">
 
+# Webpage Setup:
+
+// Mas explicacion......
+
 # The Final Product:
 
 Product:
@@ -547,6 +551,6 @@ Links:
 
 ## Apendix A:
 
-
+// Explicacion mamadora
 
 [Return to Program Features](#program-features)
