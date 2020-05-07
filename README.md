@@ -339,11 +339,11 @@ Cada vez que el pin 16 de la raspberry manda un 1, el microcontrolador manda tod
 
 ## RaspberryPi prerequisites:
 
-Download the operating system of the Raspberry Pi Zero.
+Download the operating system of the Raspberry Pi.
 
 - To download the operating system of the Raspberry enter the following link:
-- Link: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2019-04-09/2019-04-08-raspbian-stretch-lite.zip
-- Download this version.
+- Link: https://www.raspberrypi.org/downloads/raspbian/
+- Download the lastest version.
 
 Flash the operating system in the SD.
 
@@ -373,7 +373,7 @@ Create a wpa_supplicant for the connection of the raspberry to the internet.
 
 We then place the SD in the raspberry and connect it to its power source.
 
-- The power source of a Raspberry Pi Zero is recommended to be from 5 volts to 1A minimum. We recommend the official ower supply for the Raspberry pi.
+- The power source of a Raspberry Pi is recommended to be from 5 volts to 2.5A minimum. We recommend the official ower supply for the Raspberry pi.
 
 Once the Raspberry has already started, we need to access it through SSH or with a keyboard and a monitor.
 
@@ -404,8 +404,8 @@ First, we will install the necessary libraries for our program to work.
 - For it to work we just have to input the following command.
 
       sudo apt-get update
-      sudo apt-get install python3-pip libglib2.0-dev git -y
-      sudo pip3 install bluepy Crypto crc16 paho-mqtt
+      sudo apt-get install python3-pip libglib2.0-dev libatlas-base-dev git -y
+      sudo pip3 install bluepy Crypto crc16 paho-mqtt sklearn numpy
 
 - Download the folder with our program
 
@@ -413,8 +413,35 @@ First, we will install the necessary libraries for our program to work.
 
 Renombra los certificados que descargaste de la carpeta de AWS por "nix.private.key" y "nix.cert.pem" y colocalos en la carpeta "RaspberryScipt/Certs".
 
+<img src="https://i.ibb.co/tz6WH89/Screen-Shot-2020-05-06-at-23-15-42.png">
 
+- Enter the Covital/RpiScript folder.
 
+      cd Covital/RpiScript
+
+- We will have to configure the IBM IoT Platform credentials in our main.py program, so we open the editor of the Rpi Zero with the following command.
+
+      sudo nano main.py
+
+- Change the following values ​​for yours at the beginning of the code:
+
+    EndPoint = "XXXXXXXXXXXXXXXXX.iot.us-east-1.amazonaws.com"
+
+- To save the changes in the editor press the command "ctrl + o", Enter and then "ctrl + x", enter
+
+Ya con esta preparacion lo utltimo que necesitamnos es obtener la MAC-Address de nuestro MiBand3, eso lo obtendremos ejecutando el siguiente comando en la RaspberryPi.
+
+      sudo hcitool lescan
+
+<img src="https://i.ibb.co/1MfbWmZ/image.png" width="1000">
+
+- To activate the code, execute the following command:
+
+      sudo python3 main.py YOURMAC
+
+- If everything works correctly you will see the following:
+
+<img src="https://i.ibb.co/cNjC3ry/image.png" width="1000">
 
 
 
