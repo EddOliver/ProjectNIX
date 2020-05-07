@@ -461,90 +461,92 @@ Explicacion aqui: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
 
 - Analisis de la calidad se sueño en funcion de las horas dormidas y los datos de HR.
 
+La calidad de sueño la dividimos en 3 patrones conocidos que nos indican si haz dormido bien o mal, las referencias a estos patrones y mas referencias [Click Here](#references).
 
+Ideal curve (good):
+
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220039/The-Hammock.png" width="1000">
+
+The person eats a lot before sleeping (bad):
+
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220033/The-Downward-Slope.png" width="1000">
+
+Extreme physical or mental fatigue or stress (bad).
+
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220103/The-Hill.png" width="1000">
+
+Realizamos un algoritmo matematico que a travez de dar los valores registrados en la noche del HR, podemos aproximar a que curva se parece mas y saber si la persona ha dormido bien o no.
+
+- Aqui generamos de forma pseudo aleatoria 3 arreglos da datos que siguen las curvas ya antes mencionadas.
+
+<img src="https://i.ibb.co/822sQQ4/Screen-Shot-2020-05-07-at-1-21-58.png" width="1000">
+<img src="https://i.ibb.co/5sMG2gb/Screen-Shot-2020-05-07-at-1-22-44.png" width="1000">
+<img src="https://i.ibb.co/HPWxmQs/Screen-Shot-2020-05-07-at-1-23-25.png" width="1000">
+
+- Si la pasamos por nuestro algoritmo explicado mas a detalle [Here](#apendix-a) podemos ver que nos dice que tipo de curva es y nos muestra la linea de tendencia, en este caso lo que nos importa para el algoritmo es el tipo de curva mas que la linea de tendencia.
+
+<img src="https://i.ibb.co/dtMpLWP/Screen-Shot-2020-05-07-at-1-26-01.png" width="1000">
+<img src="https://i.ibb.co/8c0Sfsy/Screen-Shot-2020-05-07-at-1-26-12.png" width="1000">
+<img src="https://i.ibb.co/pZ9MB1X/Screen-Shot-2020-05-07-at-1-26-21.png" width="1000">
 
 - Reconexion automatica ante error de lectura del sensor o desconexion del reloj.
-- Deteccion del estado despierto y dormido.
 
+<img src="https://i.ibb.co/KWmj6Y7/5eb3af52cb740-1588834131-5eb3af52cb6ec.png" width="1000">
 
+- Deteccion del estado despierto y dormido mediante el HR.
 
-
-
-
-
-
-
-
-
-
-
-
-       
+<img src="https://i.ibb.co/4fQqxXW/Untitled-Diagram.png" width="1000">
 
 # The Final Product:
 
 Product:
 
-<img src="https://i.ibb.co/cNx1sFw/ps2.jpg" width="800">
-<img src="https://i.ibb.co/6BRDwXz/PsNew.jpg" width="800">
+<img src="" width="800">
+<img src="" width="800">
 
 Essential components:
 
-<img src="https://i.ibb.co/RT94wM3/Conection.jpg" width="800">
+<img src="" width="800">
 
 UI:
 
 * Real time model performance
-<img src="https://i.ibb.co/HPZ5MMb/image.png" width="800">
+<img src="" width="800">
 
 * Real time emergency notifications
-<img src="https://i.ibb.co/F0BT9Mp/image.png" width="800">
+<img src="" width="800">
 
 * Patient database search tool
-<img src="https://i.ibb.co/yVVtD9G/image.png" width="800">
+<img src="" width="800">
 
 ### Epic DEMO:
 
 Video: Click on the image
-[![Cancer](https://i.ibb.co/p1MvBJF/Logo.png)](https://youtu.be/GYoLvldvk-s)
+[![Nyx](https://i.ibb.co/RBjYTvq/5eb0d367016aa-1588646849-5eb0d36701648.png)](https://youtu.be/GYoLvldvk-s)
 
 Sorry github does not allow embed videos.
 
 ## Future Rollout:
 
-This is just an initial approximation, before February 17th we will have a much more polished final project.
+// Mame
 
 ## References:
 
 Links:
 
-(1) https://ctep.cancer.gov/protocolDevelopment/electronic_applications/docs/CTCAE_v5_Quick_Reference_8.5x11.pdf
+(1) https://ouraring.com/heart-rate-during-sleep
 
-(2) https://www.ncbi.nlm.nih.gov/books/NBK333506/table/ch04.sec1.table1/
+(2) http://healthysleep.med.harvard.edu/healthy/science/what/characteristics
+
+(3) http://healthysleep.med.harvard.edu/healthy/science/what/sleep-patterns-rem-nrem
+
+(4) https://www.uclahealth.org/sleepcenter/heart-disease
+
+(5) https://ouraring.com/sleep-stages#rem-sleep
 
 
 ## Apendix A:
 
-Install.sh Content:
 
-    export PATH=$PATH:~/.local/bin
 
-    sudo apt-get update 
-
-    sudo apt-get upgrade -y 
-
-    sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev -y 
-
-    sudo apt-get install python3-pip -y 
-
-    sudo pip3 install -U pip testresources setuptools
-
-    sudo pip3 install -U numpy==1.16.1 future==0.17.1 mock==3.0.5 h5py==2.9.0 keras_preprocessing==1.0.5 keras_applications==1.0.8 gast==0.2.2 enum34 futures protobuf 
-
-    sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v43 tensorflow-gpu 
-
-    sudo pip3 install notebook awscli paho-mqtt
-
-    sudo apt-get install python3-matplotlib python3-opencv python3-scipy -y 
-
-[Return to Libraries Setup](#libraries-setup)
+[Return to Program Features](#program-features)
