@@ -563,18 +563,15 @@ En este caso usaremos una interpolacion de grado I, II y III para cada una de la
 
 The Hammock Model:
 
-<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220039/The-Hammock.png" height="250">
-<img src="https://i.ibb.co/9gnFXXd/Screen-Shot-2020-05-07-at-16-57-58.png" height="250">
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220039/The-Hammock.png" height="250"><img src="https://i.ibb.co/9gnFXXd/Screen-Shot-2020-05-07-at-16-57-58.png" height="250">
 
 The Downward Slope:
 
-<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220033/The-Downward-Slope.png" height="250">
-<img src="https://i.ibb.co/SPLVp0C/Screen-Shot-2020-05-07-at-16-58-33.png" height="250">
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220033/The-Downward-Slope.png" height="250"><img src="https://i.ibb.co/SPLVp0C/Screen-Shot-2020-05-07-at-16-58-33.png" height="250">
 
 The Hill:
 
-<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220103/The-Hill.png" height="250">
-<img src="https://i.ibb.co/cbSsvRJ/Screen-Shot-2020-05-07-at-16-58-57.png" height="250">
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220103/The-Hill.png" height="250"><img src="https://i.ibb.co/cbSsvRJ/Screen-Shot-2020-05-07-at-16-58-57.png" height="250">
 
 La curva se calcula con todos los datos de HR de entrada y se hace el calculo de la R cuadrada de la prediccion y la curva aproximada y la que tenga menos error sera la curva que se tomara por valida.
 
