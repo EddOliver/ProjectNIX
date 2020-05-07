@@ -423,9 +423,9 @@ Renombra los certificados que descargaste de la carpeta de AWS por "nix.private.
 
       sudo nano main.py
 
-- Change the following values ​​for yours at the beginning of the code:
+- Change the following value ​​for yours at the beginning of the code:
 
-    EndPoint = "XXXXXXXXXXXXXXXXX.iot.us-east-1.amazonaws.com"
+        EndPoint = "XXXXXXXXXXXXXXXXX.iot.us-east-1.amazonaws.com"
 
 - To save the changes in the editor press the command "ctrl + o", Enter and then "ctrl + x", enter
 
@@ -441,9 +441,30 @@ Ya con esta preparacion lo utltimo que necesitamnos es obtener la MAC-Address de
 
 - If everything works correctly you will see the following:
 
-<img src="https://i.ibb.co/cNjC3ry/image.png" width="1000">
+<img src="https://i.ibb.co/mC1fy47/5eb390c1bafde-1588826403-5eb390c1baf7d.png" width="1000">
+
+## Program features:
+
+El programa que corre en la raspberry realiza las siguientes funciones:
+
+- Lectura de los sensores desde el Shield.
+
+Explicacion aqui: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
+
+- Lectura de el HR desde el MiBand3.
+
+<img src="https://i.ibb.co/n7khhG5/800-600-white-5eb3956d9ce62.png" width="1000">
+
+- Comunicacion directa con AWS desde AWSIoT Rules.
+
+<img src="https://i.ibb.co/k4J2w35/800-600-white-5eb3956d9ce62-1.png" width="1000">
+
+- Analisis de la calidad se sueño en funcion de las horas dormidas y los datos de HR.
 
 
+
+- Reconexion automatica ante error de lectura del sensor o desconexion del reloj.
+- Deteccion del estado despierto y dormido.
 
 
 
