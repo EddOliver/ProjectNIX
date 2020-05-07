@@ -461,7 +461,9 @@ Explicacion aqui: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
 
 - Analisis de la calidad se sueño en funcion de las horas dormidas y los datos de HR.
 
-La calidad de sueño la dividimos en 3 patrones conocidos que nos indican si haz dormido bien o mal, las referencias a estos patrones y mas referencias [Click Here](#references).
+La calidad de sueño la dividimos en 3 patrones conocidos que nos indican si haz dormido bien o mal, las referencias a estos patrones y mas referencias 
+
+Realizamos un algoritmo matematico que a travez de dar los valores registrados en la noche del HR, podemos aproximar a que curva se parece mas y saber si la persona ha dormido bien o no, mas detalles [Here](#apendix-a) and [References](#references).
 
 Ideal curve (good):
 
@@ -475,19 +477,11 @@ Extreme physical or mental fatigue or stress (bad).
 
 <img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220103/The-Hill.png" width="1000">
 
-Realizamos un algoritmo matematico que a travez de dar los valores registrados en la noche del HR, podemos aproximar a que curva se parece mas y saber si la persona ha dormido bien o no.
+Aqui una muestra de el HR de [insertar el nombre que quieras] mostrando que sufre uno de los patrones de sueño por el estres.
 
-- Aqui generamos de forma pseudo aleatoria 3 arreglos da datos que siguen las curvas ya antes mencionadas.
+<img src="https://i.ibb.co/RY3h4DK/Screen-Shot-2020-05-07-at-16-41-15.png" width="1000">
 
-<img src="https://i.ibb.co/822sQQ4/Screen-Shot-2020-05-07-at-1-21-58.png" width="1000">
-<img src="https://i.ibb.co/5sMG2gb/Screen-Shot-2020-05-07-at-1-22-44.png" width="1000">
-<img src="https://i.ibb.co/HPWxmQs/Screen-Shot-2020-05-07-at-1-23-25.png" width="1000">
-
-- Si la pasamos por nuestro algoritmo explicado mas a detalle [Here](#apendix-a) podemos ver que nos dice que tipo de curva es y nos muestra la linea de tendencia, en este caso lo que nos importa para el algoritmo es el tipo de curva mas que la linea de tendencia.
-
-<img src="https://i.ibb.co/dtMpLWP/Screen-Shot-2020-05-07-at-1-26-01.png" width="1000">
-<img src="https://i.ibb.co/8c0Sfsy/Screen-Shot-2020-05-07-at-1-26-12.png" width="1000">
-<img src="https://i.ibb.co/pZ9MB1X/Screen-Shot-2020-05-07-at-1-26-21.png" width="1000">
+Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta de "Google Colab".
 
 - Reconexion automatica ante error de lectura del sensor o desconexion del reloj.
 
@@ -496,12 +490,6 @@ Realizamos un algoritmo matematico que a travez de dar los valores registrados e
 - Deteccion del estado despierto y dormido mediante el HR.
 
 <img src="https://i.ibb.co/4fQqxXW/Untitled-Diagram.png" width="1000">
-
-- Aqui una muestra de el HR de [insertar el nombre que quieras] mostrando que sufre uno de los patrones de sueño por el estres.
-
-<img src="https://i.ibb.co/RY3h4DK/Screen-Shot-2020-05-07-at-16-41-15.png" width="1000">
-
-Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta de "Google Colab"
 
 # Webpage Setup:
 
@@ -593,6 +581,18 @@ La curva se calcula con todos los datos de HR de entrada y se hace el calculo de
     ss = r2_score(hrss, square)
     sl = r2_score(hrss, lin)
     st = r2_score(hrss, trip)
+
+- Aqui generamos de forma pseudo aleatoria 3 arreglos da datos que siguen las curvas ya antes mencionadas.
+
+<img src="https://i.ibb.co/822sQQ4/Screen-Shot-2020-05-07-at-1-21-58.png" width="1000">
+<img src="https://i.ibb.co/5sMG2gb/Screen-Shot-2020-05-07-at-1-22-44.png" width="1000">
+<img src="https://i.ibb.co/HPWxmQs/Screen-Shot-2020-05-07-at-1-23-25.png" width="1000">
+
+- Si la pasamos por nuestro algoritmo podemos ver que nos dice que tipo de curva es y nos muestra la linea de tendencia, en este caso lo que nos importa para el algoritmo es el tipo de curva mas que la linea de tendencia.
+
+<img src="https://i.ibb.co/dtMpLWP/Screen-Shot-2020-05-07-at-1-26-01.png" width="1000">
+<img src="https://i.ibb.co/8c0Sfsy/Screen-Shot-2020-05-07-at-1-26-12.png" width="1000">
+<img src="https://i.ibb.co/pZ9MB1X/Screen-Shot-2020-05-07-at-1-26-21.png" width="1000">
 
 Ejemplo con datos reales de un HR en una noche:
 
