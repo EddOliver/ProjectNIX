@@ -520,7 +520,7 @@ UI:
 ### Epic DEMO:
 
 Video: Click on the image
-[![Nyx](https://i.ibb.co/RBjYTvq/5eb0d367016aa-1588646849-5eb0d36701648.png)](https://youtu.be/GYoLvldvk-s)
+[![Nyx](https://i.ibb.co/BcZXy83/5eb3c8003b9be-1588840517-5eb3c8003b968-1.png)](https://youtu.be/GYoLvldvk-s)
 
 Sorry github does not allow embed videos.
 
