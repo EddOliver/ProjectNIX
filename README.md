@@ -497,6 +497,12 @@ Realizamos un algoritmo matematico que a travez de dar los valores registrados e
 
 <img src="https://i.ibb.co/4fQqxXW/Untitled-Diagram.png" width="1000">
 
+- Aqui una muestra de el HR de [insertar el nombre que quieras] mostrando que sufre uno de los patrones de sueño por el estres.
+
+<img src="https://i.ibb.co/RY3h4DK/Screen-Shot-2020-05-07-at-16-41-15.png" width="1000">
+
+Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta de "Google Colab"
+
 # Webpage Setup:
 
 // Mas explicacion......

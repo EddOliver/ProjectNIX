@@ -61,20 +61,22 @@ def check(hrs):
     trip=[]
     x = []
     x1 = np.array([0, hours/2, hours])
-    y1 = np.array([80,40,80])
+    y1 = np.array([60,np.amin(hrss),60])
     z1 = np.poly1d(np.polyfit(x1, y1, 2))
     x2 = np.array([0, hours])
-    y2 = np.array([80,40])
+    y2 = np.array([60,np.amin(hrss)])
     z2 = np.poly1d(np.polyfit(x2, y2, 1))
     x3 = np.array([0, hours/3,(2*hours)/3, hours])
-    y3 = np.array([50,60,40,80])
+    y3 = np.array([50,np.average(hrss),np.average(hrss)-np.std(hrss),60])
     z3 = np.poly1d(np.polyfit(x3, y3, 3))
+
     for ge in range(gen):
         a = (ge*hours)/gen
         x.append(a)
         square.append(z1(a))
         lin.append(z2(a))
         trip.append(z3(a))
+        
     print("Calculate R2")
     ss = r2_score(hrss, square)
     sl = r2_score(hrss, lin)
