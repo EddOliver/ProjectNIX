@@ -557,6 +557,45 @@ Links:
 
 ## Apendix A:
 
-// Explicacion mamadora
+Ya que el problema de aproximar una serie de datos a una curva puede ser resuelto de muchas maneras, utilizaremos una que nos permita con el mismo procesamiento de la raspberry obtener este resultado, asi que el metodo que usaremos es el de la interpolacion polinomial, ya que las tres gtaficas que debemos detectar son graficas que pueden describirse por un polinomio.
+
+    https://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.polyfit.html
+
+En este caso usaremos una interpolacion de grado I, II y III para cada una de las curvas.
+
+    x1 = np.array([0, hours/2, hours])
+    y1 = np.array([60,np.amin(hrss),60])
+    z1 = np.poly1d(np.polyfit(x1, y1, 2))
+    x2 = np.array([0, hours])
+    y2 = np.array([60,np.amin(hrss)])
+    z2 = np.poly1d(np.polyfit(x2, y2, 1))
+    x3 = np.array([0, hours/3,(2*hours)/3, hours])
+    y3 = np.array([50,np.average(hrss),np.average(hrss)-np.std(hrss),60])
+    z3 = np.poly1d(np.polyfit(x3, y3, 3))
+
+The Hammock Model:
+
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220039/The-Hammock.png" height="300">
+<img src="https://i.ibb.co/9gnFXXd/Screen-Shot-2020-05-07-at-16-57-58.png" height="300">
+
+The Downward Slope:
+
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220033/The-Downward-Slope.png" height="300">
+<img src="https://i.ibb.co/SPLVp0C/Screen-Shot-2020-05-07-at-16-58-33.png" height="300">
+
+The Hill:
+
+<img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220103/The-Hill.png" height="300">
+<img src="https://i.ibb.co/cbSsvRJ/Screen-Shot-2020-05-07-at-16-58-57.png" height="300">
+
+La curva se calcula con todos los datos de HR de entrada y se hace el calculo de la R cuadrada de la prediccion y la curva aproximada y la que tenga menos error sera la curva que se tomara por valida.
+
+    ss = r2_score(hrss, square)
+    sl = r2_score(hrss, lin)
+    st = r2_score(hrss, trip)
+
+Ejemplo con datos reales de un HR en una noche:
+
+<img src="https://i.ibb.co/RY3h4DK/Screen-Shot-2020-05-07-at-16-41-15.png" width="800">
 
 [Return to Program Features](#program-features)
