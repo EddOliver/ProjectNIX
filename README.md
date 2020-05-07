@@ -2,7 +2,7 @@
 
 Descripcion del proyecto
 
-<img src="https://i.ibb.co/RBjYTvq/5eb0d367016aa-1588646849-5eb0d36701648.png" width="1000">
+<img src="https://i.ibb.co/BcZXy83/5eb3c8003b9be-1588840517-5eb3c8003b968-1.png" width="1000">
 
 # Table of contents
 
