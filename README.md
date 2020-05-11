@@ -521,6 +521,52 @@ After all the dependencies ave been installed, at the console write:
 
 <img src="https://i.ibb.co/TbxvFzS/ezgif-com-video-to-gif-3.gif" width="600">
 
+## Webpage Features:
+
+Main Page:
+
+Esta pagina tiene como fin ser un resumen de tu desempeño al dormir y mantenerte activa, reflejado en un score que toma en consideración la calidad de sueño, actividad física y horas dormidas. Ademas damos la opción de poder realizar un share en redes sociales de tu desempeño para demostrar tus objetivos!
+
+<img src="https://i.ibb.co/F0NZ04S/image.png" width="800">
+
+Dashboard:
+
+Tenemos un dashboard con todas las mediciones que realizamos de los sensores, ademas de dar datos valiosos para el usuario sobre su actividad física, sueño, etc.
+
+<img src="https://i.ibb.co/p4Xdy1T/image.png" width="800">
+
+Recommendations:
+
+Esta es una de las paginas mas importantes ya que esta nos indica las recomendaciones que debemos de tomar en consideración para mejorar nuestro estilo de vida y por lo tanto mejorar la calidad de sueño, el usuario aquí puede controlar ademas que recomendaciones le son útiles en su estilo de vida o no.
+
+<img src="https://i.ibb.co/PtVxKfR/image.png" width="800">
+
+Demo:
+
+Esta pagina muestra el Demo de nuestro proyecto.
+
+<img src="IMAGEN PENDIENTE" width="800">
+
+Github:
+
+Esta pestaña nos manda al repositorio del proyecto, ya que al ser un código abierto, pueden complementarlo y mejorarlo.
+
+<img src="IMAGEN PENDIENTE" width="800">
+
+Pensando en los distintos dispositivos que podrían abrir nuestra web app hicimos que sea una pagina web responsive, por lo tanto puede ser abierta en cualquier dispositivo.
+
+App in Samsung S10:
+
+<img src="https://i.ibb.co/LzFWXDd/Screenshot-20200511-164610-Chrome.jpg" height="400">
+<img src="https://i.ibb.co/0cyLzSN/Screenshot-20200511-164627-Chrome.jpg" height="400">
+<img src="https://i.ibb.co/CM9bZfQ/Screenshot-20200511-164637-Chrome.jpg" height="400">
+
+App in iPhoneSE:
+
+<img src="https://i.ibb.co/cwLft2V/img3.png" height="400">
+<img src="https://i.ibb.co/r7wK04J/img2.png" height="400">
+<img src="https://i.ibb.co/tz5096J/img1.png" height="400">
+
 # The Final Product:
 
 Product:
