@@ -557,15 +557,11 @@ Pensando en los distintos dispositivos que podrían abrir nuestra web app hicimo
 
 App in Samsung S10:
 
-<img src="https://i.ibb.co/LzFWXDd/Screenshot-20200511-164610-Chrome.jpg" height="400">
-<img src="https://i.ibb.co/0cyLzSN/Screenshot-20200511-164627-Chrome.jpg" height="400">
-<img src="https://i.ibb.co/CM9bZfQ/Screenshot-20200511-164637-Chrome.jpg" height="400">
+<img src="https://i.ibb.co/LzFWXDd/Screenshot-20200511-164610-Chrome.jpg" height="400"><img src="https://i.ibb.co/0cyLzSN/Screenshot-20200511-164627-Chrome.jpg" height="400"><img src="https://i.ibb.co/CM9bZfQ/Screenshot-20200511-164637-Chrome.jpg" height="400">
 
 App in iPhoneSE:
 
-<img src="https://i.ibb.co/cwLft2V/img3.png" height="400">
-<img src="https://i.ibb.co/r7wK04J/img2.png" height="400">
-<img src="https://i.ibb.co/tz5096J/img1.png" height="400">
+<img src="https://i.ibb.co/cwLft2V/img3.png" height="400"><img src="https://i.ibb.co/r7wK04J/img2.png" height="400"><img src="https://i.ibb.co/tz5096J/img1.png" height="400">
 
 # The Final Product:
 
