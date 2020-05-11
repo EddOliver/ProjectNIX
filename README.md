@@ -497,7 +497,7 @@ Todos los archivos de la pagina web estan en la carpeta webpage y la puedes abri
 
 Instala e siguiente programa:
 
-Link: https://nodejs.org/es/
+- Link: https://nodejs.org/es/
 
 Entra en el folder webapp.
 
