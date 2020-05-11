@@ -513,13 +513,13 @@ In the cmd or terminal write the next commmand.
 
     npm install
 
-<img src="https://i.ibb.co/bgp4Ms6/image.png" width="600">
+<img src="https://i.ibb.co/q9JdqRP/image.png" width="600">
 
 After all the dependencies ave been installed, at the console write:
 
     npm start
 
-<img src="https://i.ibb.co/SPdkwZL/ezgif-com-video-to-gif-2.gif" width="600">
+<img src="https://i.ibb.co/TbxvFzS/ezgif-com-video-to-gif-3.gif" width="600">
 
 # The Final Product:
 
