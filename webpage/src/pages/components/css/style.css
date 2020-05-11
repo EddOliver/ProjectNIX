@@ -1,0 +1,19 @@
+#navig {
+  color:white;
+}
+
+#navig:link {
+  text-decoration: none;
+}
+
+#navig:visited {
+  text-decoration: none;
+}
+
+#navig:hover {
+  text-decoration: underline;
+}
+
+#navig:active {
+  text-decoration: underline;
+}
