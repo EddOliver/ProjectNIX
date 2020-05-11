@@ -493,7 +493,31 @@ Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta d
 
 # Webpage Setup:
 
-// Mas explicacion......
+To visualize the DB in a Navigator you need to install NodeJS in your computer.
+
+Link: https://nodejs.org/es/
+
+Once installed enter the folder of the project called "ReactAPP".
+
+<img src="https://i.ibb.co/NsHJj18/image.png" width="600">
+
+Once there, oper the terminal or in the case of windows cmd.
+
+NOTE: If you are using windows just type cmd on the search bar.
+
+<img src="https://i.ibb.co/F3b8GGd/ezgif-2-e535d3643141.gif" width="600">
+
+In the cmd or terminal write the next commmand.
+
+    npm install
+
+<img src="https://i.ibb.co/bgp4Ms6/image.png" width="600">
+
+After all the dependencies ave been installed, at the console write:
+
+    npm start
+
+<img src="https://i.ibb.co/SPdkwZL/ezgif-com-video-to-gif-2.gif" width="600">
 
 # The Final Product:
 
