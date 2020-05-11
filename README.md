@@ -493,6 +493,8 @@ Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta d
 
 # Webpage Setup:
 
+URL: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
+
 Todos los archivos de la pagina web estan en la carpeta webpage y la puedes abrir en local con el siguiente proceso:
 
 Instala e siguiente programa:
@@ -522,6 +524,8 @@ After all the dependencies ave been installed, at the console write:
 <img src="https://i.ibb.co/TbxvFzS/ezgif-com-video-to-gif-3.gif" width="600">
 
 ## Webpage Features:
+
+URL: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
 
 Main Page:
 
@@ -586,6 +590,8 @@ UI:
 <img src="" width="800">
 
 ### Epic DEMO:
+
+Demo URL: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
 
 Video: Click on the image
 [![Nyx](https://i.ibb.co/BcZXy83/5eb3c8003b9be-1588840517-5eb3c8003b968-1.png)](https://youtu.be/GYoLvldvk-s)
