@@ -675,6 +675,14 @@ Harvard
 
 (15).  https://emedicine.medscape.com/article/276104-overview 
 
+(16) https://med.stanford.edu/news/all-news/2019/09/teens-sleep-43-more-minutes-per-night-after-combo-of-two-treatme.html
+
+(17) https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2751894
+
+(18) https://med.stanford.edu/news/all-news/2019/09/teens-sleep-43-more-minutes-per-night-after-combo-of-two-treatme.html
+
+(19) https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2751894
+
 
 ## Apendix A:
 
