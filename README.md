@@ -15,12 +15,14 @@ Descripcion del proyecto
 * [Webpage Setup](#webpage-setup)
 * [The Final Product](#the-final-product)
 * [Future Rollout](#future-rollout)
+* [Studies supporting our thesis](#studies-supporting-our-thesis)
 * [References](#references)
 * [Apendix](#apendix-a)
 
-# Introduction:
+# Introduction and inspiration:
 
-// intro mamadora
+
+
 
 # Materials:
 
@@ -602,19 +604,72 @@ Sorry github does not allow embed videos.
 
 // Mame
 
+
+# Studies supporting our thesis
+
+The world bank mentions there are 3764 Billion women, 7.746% are between 40 to 50 years old, that represents 292 billion women suffering the process of menopause.
+
+(1)According to ACOG “Menopause is the time in your life when you naturally stop having menstrual periods. Menopause happens when the ovaries stop making estrogen. Estrogen is a hormone that helps control the menstrual cycle. Menopause marks the end of the reproductive years. The average age that women go through menopause is 51 years.”
+
+Nevertheless, the process of menopause begins in the 30's, that previous stage is called Perimenopause. Perimenopause starts when the estrogens levels begin to decay.
+
+(2)Nature : Hormonal changes that begin during the menopausal transition affect many biological systems. Accordingly, the signs and symptoms of menopause include central nervous system-related disorders; metabolic, weight, cardiovascular and musculoskeletal changes; urogenital and skin atrophy; and sexual dysfunction.
+
+(3) NIH said that one of the first symptoms, even in the perimenopause stage, is insomnia and sleep disorders. Also mentions that sleep disorders could persist even after menopause is over. Melatonin 1 (MT1) and Melatonin 2 (MT2) are the hormones in charge of drowsiness. Those hormones also affect the total sleeping time (TST) and the Sleeping Efficiency (SE).
+
+The next graph shows the percentage of people that has sleep disorder, separated them in men and women.
+
+
+
+The next graph shows how many women have sleep disorders during the age and during perimenopause and menopause. 
+
+## Regarding sleep and light 
+
+
+(4)A Harvard study shows that many of the symptoms of menopause could get worse if the patient does not get good sleep. Hormone levels change and that could cause insomnia, and insomnia symptoms could worsen the menopause symptoms. Insomnia could produce short memory problems and focusing problems. 
+
+(5) Mayo Clinic in the USA said that insomnia could also produce another physical and mental illness. The lack of sleep increases the risk of having health problems such as, high blood pressure, heart diseases, diabetes and chronic pain. Putting in danger the people who suffer from this illness. 
+
+(6)Elsavier published an article about 6 different research of sleeping treatments with light, and how those treatments improve the health of the people. Also mentions that in some cases it's better because it reduces the amount of drugs people have to take in order to get some sleep. 
+
+(7)Pulse published an article where they showed that the red light makes it better to sleep. Also the red light it’s good to increase TST and SE. 
+
+(8)Harvard says that eating food with a high GI index could produce insomnia.
+Go for low-GI foods as much as possible. This means aiming to eat fruits and vegetables, beans and legumes, nuts and seeds, whole grains, and lean protein instead of anything made of processed grains or with added sugars. Think plain yogurt with berries and nuts instead of cereal or bagels for breakfast; a big plate of roasted vegetables and grilled salmon instead of pasta and meatballs for dinner.
+
+Never eat large meals close to bedtime. As a general rule, a large meal should be eaten at least three to four hours before lying down, maybe more. You do not want to go to bed with lots of food in your intestines!
+
+If you have to have a little something closer to bedtime, avoid sugars and processed grains. A sliced apple with a little almond butter; some blueberries and nut milk; or maybe hummus and carrots. Those are all well-balanced, plant-based snacks.
+
 ## References:
 
-Links:
+(1)https://datos.bancomundial.org/indicator/SP.POP.2529.FE.5Y?view=chart Banco mundial
 
-(1) https://ouraring.com/heart-rate-during-sleep
+(2)https://www.nature.com/articles/nrendo.2017.180?proof=trueIn Nature 
 
-(2) http://healthysleep.med.harvard.edu/healthy/science/what/characteristics
+(3)https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4621258/ NIH y la NAtional Library of Medicine
 
-(3) http://healthysleep.med.harvard.edu/healthy/science/what/sleep-patterns-rem-nrem
+(4)https://www.health.harvard.edu/womens-health/perimenopause-rocky-road-to-menopause
+Harvard 
 
-(4) https://www.uclahealth.org/sleepcenter/heart-disease
+(5)https://www.mayoclinic.org/es-es/diseases-conditions/insomnia/in-depth/insomnia-treatment/art-20046677 MAyo Clinic
 
-(5) https://ouraring.com/sleep-stages#rem-sleep
+(6)https://www.elsevier.es/es-revista-atencion-primaria-27-articulo-terapia-luminica-efectividad-el-tratamiento-13116159 Elsavier
+
+(7)https://www.pulse.ng/lifestyle/beauty-health/red-lights-helps-your-sleep-better-than-other-lights/8vb9l8s Pulse
+
+(8)https://www.health.harvard.edu/blog/menopause-and-insomnia-could-a-low-gi-diet-help-2020011718710 Harvard 
+
+
+(9) https://ouraring.com/heart-rate-during-sleep
+
+(10) http://healthysleep.med.harvard.edu/healthy/science/what/characteristics
+
+(11) http://healthysleep.med.harvard.edu/healthy/science/what/sleep-patterns-rem-nrem
+
+(12) https://www.uclahealth.org/sleepcenter/heart-disease
+
+(13) https://ouraring.com/sleep-stages#rem-sleep
 
 
 ## Apendix A:
