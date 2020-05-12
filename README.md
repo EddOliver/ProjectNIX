@@ -671,6 +671,10 @@ Harvard
 
 (13) https://ouraring.com/sleep-stages#rem-sleep
 
+(14) Dalal, Pronob & Agarwal, Manu. (2015). Postmenopausal syndrome. Indian journal of psychiatry. 57. S222-32. 10.4103/0019-5545.161483. 
+
+(15).  https://emedicine.medscape.com/article/276104-overview 
+
 
 ## Apendix A:
 
