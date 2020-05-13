@@ -12,6 +12,7 @@ Descripcion del proyecto
 * [AWS Setup](#aws-setup)
 * [Grove AI Hat Setup](#grove-ai-hat-setup)
 * [RaspberryPi Setup](#raspberrypi-setup)
+* [Argon Setup](#argon-setup)
 * [Webpage Setup](#webpage-setup)
 * [The Final Product](#the-final-product)
 * [Future Rollout](#future-rollout)
@@ -41,7 +42,9 @@ https://www.amazon.com/dp/B06XWN9Q99/ref=cm_sw_em_r_mt_dp_U_XTllEbK0VKMAZ
 https://www.amazon.com.mx/dp/B084KZRY7Q/ref=cm_sw_em_r_mt_dp_U_rOnSEbNV83B87
 - MiBand 3.                                            x1.
 https://www.amazon.com/dp/B07VSPQMNH/ref=cm_sw_em_r_mt_dp_U_y-ESEbC65R0BG
-
+- Particle Argon.                                      x1.
+https://docs.particle.io/argon/
+- Matrix RGB NeoPixel 4x4                              x2.
 // Hardware del dok
 
 Software:
@@ -55,6 +58,8 @@ https://nodejs.org/
 https://reactjs.org/
 - balenaEtcher:
 https://www.balena.io/etcher/
+- Particle IDE:
+https://console.particle.io/
 - AWS:
 https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html
 
@@ -524,6 +529,98 @@ After all the dependencies ave been installed, at the console write:
     npm start
 
 <img src="https://i.ibb.co/TbxvFzS/ezgif-com-video-to-gif-3.gif" width="600">
+
+# Argon Setup:
+
+Primero tenemos que tener una cuenta creada en:
+
+https://www.particle.io/
+
+Una vez ahi tenemos que acceder al WebIDE:
+
+https://build.particle.io/
+
+Ya ahi podremos cargar nuestro programa en el IDE.
+
+<img src="https://i.ibb.co/sbTRKrb/image.png" width="800">
+
+Todas las librerías pueden ser agregadas desde la pestaña de librerías.
+
+<img src="https://i.ibb.co/YbkSyFT/image.png" width="800">
+
+## How does it work:
+
+En este caso el control se hace realizando request cada 3 segundos a nuestro bucket de S3 y revisando si se ha realizado una activación.
+
+    request.hostname = "menopause-hackster.s3.amazonaws.com";
+    request.port = 80;
+    request.path = "/control.json";
+    http.get(request, response, headers);
+
+    if(response.body.substring(5,6) == "0")
+    {
+        Particle.publish("status","deactivate", PUBLIC);
+    }
+
+    else
+    {
+        Particle.publish("status","activate", PUBLIC);
+        colorWipe(strip.Color(255, 129, 0), 50); // Red
+        colorWipe(strip.Color(0, 0, 0), 50); // Black
+        delay(200);
+    }
+
+# Light Bulb Control:
+
+Esta configuración funciona para focos compatibles con SmartHome y MagicLight Bulbs (nuestro caso).
+
+Primero tenemos que tener configurados nuestros focos.
+
+https://www.magiclightbulbs.com/pages/how-to-set-up-magiclight-wifi-bulb
+
+Y tener una cuenta en IFTTT:
+
+https://ifttt.com/
+
+Ya que tenemos todo configurado realizamos lo siguiente:
+
+- Creamos una nueva función:
+
+<img src="https://i.ibb.co/y05kSb9/image.png" width="800">
+
+Conectamos estos dos servicios:
+
+Webhooks (Nos permite controlar las luces mediante GET request): 
+
+<img src="https://i.ibb.co/mydTmLj/image.png" width="800">
+
+MagicHue:
+
+<img src="https://i.ibb.co/svpvyRW/image.png" width="800">
+
+Podemos observar que tenemos todas estas opciones para modificar lo que queremos que hagan los focos, en este caso utilizamos nosotros la opcion de color, intensidad y encender/apagar.
+
+<img src="https://i.ibb.co/nMHhFxd/image.png" width="800">
+
+Nuestro programa realiza lo siguiente.
+
+| State | color | Intensity | Before Sleep | After Sleep |
+| ------| ----- | ----------| -------------| ----------- |
+|  ON   | Red   | 75 %      |  45 min      | N/A         |
+|  ON   | Red   | 25 %      |  15 min      | N/A         |
+|  OFF  | N/A   | 0 %       |  0 min       | N/A         |
+|  ON   | Blue  | 100 %     |  N/A         | 0 min       |
+
+La ejecución de esto esta controlado mediante una lambda en AWS controlada mediante AWS IoT, esta se activa cada vez que mandamos cualquier dato desde la raspberry el topic /Bulbs, mediante una IoT Rule como ya se vio antes.
+
+<img src="https://i.ibb.co/QH19w7B/image.png" width="800">
+
+En este caso:
+
+mysleepH: Hora de dormir
+mysleepM: Minuto para dormir
+myawakeH: Hora de levantarse
+myawakeM: Minuto de levantarse
 
 ## Webpage Features:
 
