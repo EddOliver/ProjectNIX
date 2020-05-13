@@ -909,4 +909,4 @@ Example with real Heart Rate data in one night:
 
 <img src="https://i.ibb.co/RY3h4DK/Screen-Shot-2020-05-07-at-16-41-15.png" width="800">
 
-[Return to Program Features](#raspberry-software-features:)
+[Return to Program Features](#raspberry-software-features)
