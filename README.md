@@ -21,8 +21,47 @@ Descripcion del proyecto
 * [Apendix](#apendix-a)
 
 # Introduction and inspiration:
+Menopause is defined retrospectively as the time of the final menstrual period, followed by 12 months of amenorrhea (when menstrual bleeding stops); post-menopause describes the period following the final menses.
 
+The signs and symptoms of menopause include central nervous system-related disorders; metabolic, weight, cardiovascular and musculoskeletal changes; urogenital and skin atrophy; and sexual dysfunction; Those hormonal changes contribute to one specific symptom, called Insomnia.
 
+49.6% of the worldwide population is female, 100% of this women will have eventually menopause symptoms also 4 years before mensis cease, Natural menopause occurs around 51 years worldwide; the average life expectancy at birth is 72 years, Therefore, women are likely to spend almost 20-25 years in menopause.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1118376/image_VEjG1sF9wO.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+According to the National Sleep Foundation, approximately 61% of menopausal women have sleep problems.
+
+Insomnia and mood disorders occur in 40–60% of women during the menopausal transition.
+
+According to several articles and reports, including from Mayo Clinic and studies from universities such as Harvard, women with insomnia are more likely than others to report problems such as anxiety, stress, tension, and depressive symptoms, memory issues, and focusing problems. Repeatedly lack of sleep increases the risk of health problems such as high blood pressure, heart problems, diabetes and chronic pain. In worst cases they can also trigger more severe mental problems,as bipolar disorders, schizophrenia, panic disorder or OCD.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1118379/image_rqGcnfsThN.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+There´s available hormone therapy, that involves the administration of synthetic estrogen and progesterone to replace a woman's depleting hormone levels and thus alleviate menopausal symptoms. However, HT has been linked to various contraindications and several risks. Some of the contraindications are: History of breast and endometrial cáncer; liver disease; Hypertriglyceridemia; Thromboembolic disorders; Undiagnosed vaginal bleeding; Endometriosis; Fibroids
+
+Some of the adverse effects are: Nausea; Bloating, weight gain; fluid retention; Mood swings ; Breakthrough bleeding and breast tenderness
+
+Also we have to mention the potential risks of : breast and Endometrial cancer; uterine hyperplasia and its cancer; thromboembolism, biliary pathology and strokes.
+
+Now, let's start with the crux of the problem, as you can understand, not every woman can start hormonal therapy, and also if they can, they will probably suffer the side effects and take the risks of different types of cancer.
+
+By the year 2025, there will be 1 billion women globally experiencing the symptoms of menopause, a number too big to ignore. A huge part of the world’s workforce will be experiencing these symptoms and will lower their productivity, in which all sectors will be involved, it also can last up to ten years to take into consideration the economics of the problem.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1118380/image_eQdbJPRQN4.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+And as we know women have the greatest influence on the marketing and purchasing power globally, so solutions of this kind are sure to be a hit.
+
+This sector is projected to be over $50B dollars by 2025. But there are very limited non drug solutions in the market.
+
+If we summarize all that we find that there are two things that are crucial in easing those symptoms and improving the quality of life of women in this stage:
+
+1. To improve sleep
+
+AND
+
+2. To routinely exercise.
+
+Bad sleep creates a negative feedback loop for women that exacerbates with every passing day. Only by improving sleep and tracking exercise we would be attacking not one or two symptoms, but transforming that feedback loop into a positive one that improves the well being of the patient.
 
 
 # Materials:
