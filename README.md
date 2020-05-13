@@ -13,6 +13,7 @@ Complete IoT and domotics platform that tracks the patient’s sleep via three m
 * [Grove AI Hat Setup](#grove-ai-hat-setup)
 * [RaspberryPi Setup](#raspberrypi-setup)
 * [Argon Setup](#argon-setup)
+* [Light Bulb Control](#light-bulb-control)
 * [Webpage Setup](#webpage-setup)
 * [Epic Demo](#epic-demo)
 * [Future Rollout](#future-rollout)
