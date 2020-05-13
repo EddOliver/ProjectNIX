@@ -1,6 +1,6 @@
 # ProjectNIX
 
-Descripcion del proyecto
+Complete IoT and domotics platform that tracks the patient’s sleep via three main devices, displays the data and gives recomendations.
 
 <img src="https://i.ibb.co/BcZXy83/5eb3c8003b9be-1588840517-5eb3c8003b968-1.png" width="1000">
 
