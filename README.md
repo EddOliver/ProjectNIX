@@ -774,7 +774,7 @@ App in iPhoneSE:
 Demo URL: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
 
 Video: Click on the image
-[![Nyx](https://i.ibb.co/BcZXy83/5eb3c8003b9be-1588840517-5eb3c8003b968-1.png)](https://youtu.be/GYoLvldvk-s)
+[![Nyx](https://i.ibb.co/BcZXy83/5eb3c8003b9be-1588840517-5eb3c8003b968-1.png)](https://www.youtube.com/watch?v=b-vgtMr4hpI&feature=emb_title)
 
 Sorry github does not allow embed videos.
 
