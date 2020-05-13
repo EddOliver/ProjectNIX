@@ -102,9 +102,58 @@ https://console.particle.io/
 - AWS:
 https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html
 
-// Software del dok
+# Solution
+Our solution is a complete IoT and domotics platform that tracks the patient’s sleep via three main devices, they display the data and give notifications and recommendations to the patient and it is compatible with Amazon Alexa.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119303/p5_gm21Q3b4Ij.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+There is one single item that has proven through several clinical studies to improve sleep considerably and most people don´t know of its benefits:
+
+- The sleep mask: Here, of course with the help of my teammates and the testimony of several women, some that are reaching or have past the age of menopause, we designed a modern IoT enabled sleep mask that tracks your sleep quality, movement, temperature and humidity via two main sensors and uses flashes of light from a couple of light sources.
+
+NOTE: Blue LED Lights are dangerous for the eye, namely the cones and rods and the Retina, so in the sleep mask we only use RED and Yellow tones.
+
+See: https://www.macular.org/ultra-violet-and-blue-light
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119286/p3_wmdGd5PAQr.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+The idea comes from a study in Stanford that demonstrated that flashing lights of certain colors and wavelengths can help fix our circadian rhythm and improve sleep considerably. (16, 17, 18, 19) All the information and the cycle is sent to our platform to track and use that data in order to perform domotics and follow up with recommendations.
+
+Then for physical exercise and to track heart rate we are using a commercial fitness Band that we hacked through an embedded computer to receive and send information to our platform in order to complete the service. Heart rate is perhaps the most important variable we are tracking as it can give us an entry point to possibly pre-diagnose certain conditions and will enable the system to improve much more.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119501/p6_2AWl3NcxP8.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+The last device is a hub with more sensors which in turn track now the patient’s environment in order to perform the last step which is domotics.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119288/p1_zWB2HvHeo2.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+There are probably close to 100 million Amazon alexa enabled devices already in the US alone, which is the reason why we developed an alexa app that synchronizes with the platform and through other IoT devices such as these IoT bulbs, thermostat, and blinds we can, in effect control the surrounding of the person and create an environment around them that transforms into the proper one, to sleep.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119289/p2_SceszTRwzH.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+Now let's talk more about the app. It’s interface is a progresive web app created with react that on its homepage shows you immediately a wellness score derived from all the data we are gathering, notice the Sharing capabilities of it as we know that these kind of apps make sense in this day and age whenever it is gamified and you can share and compete with others.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1118381/image_abAj2PKwqW.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+Now we go to our very animated dashboard which indicates all the variables we are tracking in real time and includes two big sections regarding Physical activity and sleep quality.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1118382/image_GqnbwQ4h4F.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+All this data is taken from the sensors both on the mask, watch and band to get to simple indicators. Then we have the recommendations tab in which you will be able to control in effect the level of automation, and hours for your sleep. A possible business model would be sell the hardware and a Freemium model on the software and platform.
+
+<img src="https://hackster.imgix.net/uploads/attachments/1118383/image_kv3hzmmLfR.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+You can check the app via this link: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
+
+If you are a judge of this contest, send us a message and we will show you a real time demo via Zoom of the sensors and system working!
+
+Hope you liked our solution as much as we like to create the idea, thank you and take care of those symptoms by trying NYX.
 
 # Connection Diagrams:
+
+Full System:
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119574/image_yDdaIwjCzz.png?auto=compress%2Cformat&w=740&h=555&fit=max">
 
 RaspberryPi Modules:
 
@@ -117,6 +166,14 @@ RaspberryPi Connection:
 System Connection:
 
 <img src="https://i.ibb.co/ZHrz7Yq/squematic-1.png" width="800">
+
+Argon for the Sleep mask:
+
+<img src="https://hackster.imgix.net/uploads/attachments/1119336/image_RCsIkXiyWr.png?auto=compress%2Cformat&w=740&h=555&fit=max">
+
+# Building the sleepmask:
+Check:
+https://www.hackster.io/340673/nyx-project-3d8ee3#toc-building-the-sleepmask-5
 
 # AWS Setup:
 
@@ -262,19 +319,19 @@ The Sort Key value special function is:
 
 ## S3:
 
-Deberemos crear un bucket de S3 que nos sevrira como almacenamiento de los datos de los sensores y como hosting de la pagina web.
+We will have to create an S3 bucket that will serve as storage of the sensor data and as web page hosting.
 
 <img src="https://i.ibb.co/8r1mTKV/Screen-Shot-2020-05-05-at-16-55-49.png" width="1000">
 
-Los nombres de todos los buckets en AWS son unicos y exclusivos, asi que intenta primero con nombres sencillos y luego aumentales la complejidad si no estan disponibles. 
+The names of all the buckets in AWS are unique and unique, so try simple names first and then increase the complexity if they are not available.
 
-En nuestro caso se llama: menopause-hackster
+In our case it is called: menopause-hackster
 
 <img src="https://i.ibb.co/k27BWwf/Screen-Shot-2020-05-05-at-17-02-19.png" width="1000">
 
-Ahora tenemos que configurar el acceso publico del bucket para poder acceder a los datos desde la pagina web y el acceso de CORS para poder llamar los datos por API.
+Now we have to configure the public access of the bucket to be able to access the data from the web page and the CORS access to be able to call the data by API.
 
-Configuramos el acceso publico del bucket de esta forma:
+We configure the public access of the bucket in this way:
 
 <img src="https://i.ibb.co/rZgR3hN/Screen-Shot-2020-05-05-at-17-05-14.png" width="1000">
 
@@ -293,11 +350,11 @@ Policy:
         ]
     }
 
-Habilitamos el acceso del CORS de la siguiente forma:
+We enable CORS access as follows:
 
 <img src="https://i.ibb.co/zZCLFsc/Screen-Shot-2020-05-05-at-17-05-27.png" width="1000">
 
-La action que vamos a crear para que los datos leidos por los sensores lleguen al S3 sera la siguiente.
+The action that we are going to create so that the data read by the sensors reaches S3 will be the following.
 
 <img src="https://i.ibb.co/QrNH8D2/Screen-Shot-2020-05-05-at-17-22-20.png" width="1000">
 
@@ -305,7 +362,7 @@ La action que vamos a crear para que los datos leidos por los sensores lleguen a
 
 ## Grove AI hat prerequisites:
 
-NOTA: Utilizamos el Grove AI Hat debido a que no contabamos con el shield Grove de raspberry y teniamos este a la mano, sin embargo ahorro tiempo de programacion de la RaspberryPi ya que teniamos experiencia trabajando con este shield.
+NOTE: We used the Grove AI Hat because we did not have the Raspberry Grove shield and we had this one at hand, however I saved programming time for the RaspberryPi since we had experience working with this shield.
 
 Configure the Arduino Board Manager URL.
 
@@ -337,30 +394,32 @@ Open the demo at Sketch → Include Library → Add .ZIP Library...
 
 <img src="https://i.ibb.co/bB7FnbW/Captura.png" width="800">
 
-Añade las dos librerias en la carpeta de Arduino/Libraries. Especificamente ambas estan diseñadas para hacer funcionar los sensores con esta board.
+Add the two libraries in the Arduino / Libraries folder. Both are specifically designed to operate the sensors with this board.
 
 - ADS1115-master.zip
 - DHT_sensor_library.zip
 
 <img src="https://i.ibb.co/JvM9jjB/Screen-Shot-2020-05-04-at-22-47-06.png" width="800">
 
-Abre el archivo Arduino/Msensors/Msensors.ino y si toda la instalacion funciono correctamente, deberas ver una ventana de compilacion correcta.
+Open the Arduino / Msensors / Msensors.ino file and if the whole installation worked correctly, you should see a correct compilation window.
 
 <img src="https://i.ibb.co/hRrhtN1/Capturla.png" width="800">
 
 ## Communicating the shield with the Raspberry Pi:
 
-Comunicar el shield con la raspberry pi fue un poco laborioso debido a los siguientes factores:
+Communicating the shield with the raspberry pi was a little laborious due to the following factors:
 
-- Los puertos seriales de la raspberry y el Hat estan en conectados Tx -> Tx y Rx -> Rx.
-- El puerto I2C de ambos esta correctamente conectado pero ya que el sensor Analogico requiere I2C en el Hat como Master, no podiamos comunicarlo con la raspberry que solo puede funcionar como master.
-- La comunicacion de SPI la utiliza el micro controlador para programarse, asi que tampoco era una opcion.
+The serial ports of the raspberry and the Hat are connected Tx -> Tx and Rx -> Rx.
 
-Sin embargo la Raspberry y el Microcontrolador comprarten casi todos los pines como se puede ver en la imagen.
+The I2C port of both is correctly connected but since the Analog sensor requires I2C in the Hat as Master, we could not communicate with the raspberry that can only function as master.
+
+SPI communication is used by the micro controller for programming, so it was not an option either.
+
+However, the Raspberry and the Microcontroller buy almost all the pins as you can see in the image.
 
 <img src="https://i.ibb.co/NpWY8Fj/Screen-Shot-2020-05-04-at-23-00-24.png" width="800">
 
-Asi que se nos ocurrio crear un protocolo donde los datos se pasaran de manera paralela del Hat a la Raspberry, lo decidimos llamar paralax, ya que el hat es un shield, solo hace falta programarlos, en los codigos del Hat y de la Raspberry ya realizamos la programacion correspondiente, sin embargo asi estan conectados por software.
+So it occurred to us to create a protocol where the data was passed in parallel from the Hat to the Raspberry, we decided to call it paralax, since the hat is a shield, it only needs to be programmed, in the codes of the Hat and the Raspberry already We carry out the corresponding programming, however they are connected by software.
 
 | HAT | Direction | RPI |
 | ---| ---------  |---  |
@@ -379,7 +438,7 @@ Asi que se nos ocurrio crear un protocolo donde los datos se pasaran de manera p
 | 21 | -------->  | 24  |
 | 10 | <--------  | 16  |
 
-Cada vez que el pin 16 de la raspberry manda un 1, el microcontrolador manda toda la informacion a la raspberry de forma paralela y la almacena en 3 variables.
+Every time pin 16 of the raspberry sends a 1, the microcontroller sends all the information to the raspberry in parallel and stores it in 3 variables.
 
 # RaspberryPi Setup:
 
@@ -457,7 +516,7 @@ First, we will install the necessary libraries for our program to work.
 
        git clone https://github.com/EddOliver/ProjectNIX
 
-Renombra los certificados que descargaste de la carpeta de AWS por "nix.private.key" y "nix.cert.pem" y colocalos en la carpeta "RaspberryScipt/Certs".
+Rename the certificates you downloaded from the AWS folder to "nix.private.key" and "nix.cert.pem" and place them in the "RaspberryScipt /Certs" folder.
 
 <img src="https://i.ibb.co/tz6WH89/Screen-Shot-2020-05-06-at-23-15-42.png">
 
@@ -475,7 +534,7 @@ Renombra los certificados que descargaste de la carpeta de AWS por "nix.private.
 
 - To save the changes in the editor press the command "ctrl + o", Enter and then "ctrl + x", enter
 
-Ya con esta preparacion lo utltimo que necesitamnos es obtener la MAC-Address de nuestro MiBand3, eso lo obtendremos ejecutando el siguiente comando en la RaspberryPi.
+With this preparation, the last thing we need to do is obtain the MAC-Address of our MiBand3, we will obtain this by executing the following command on the RaspberryPi.
 
       sudo hcitool lescan
 
@@ -491,25 +550,25 @@ Ya con esta preparacion lo utltimo que necesitamnos es obtener la MAC-Address de
 
 ## Raspberry software features:
 
-El programa que corre en la raspberry realiza las siguientes funciones:
+The program that runs on the raspberry performs the following functions:
 
-- Lectura de los sensores desde el Shield.
+- Reading the sensors from the Shield.
 
 Explicacion aqui: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
 
-- Lectura de el HR desde el MiBand3.
+- Reading the HR from the MiBand3.
 
 <img src="https://i.ibb.co/n7khhG5/800-600-white-5eb3956d9ce62.png" width="1000">
 
-- Comunicacion directa con AWS desde AWSIoT Rules.
+- Direct communication to AWS from AWSIoT Rules.
 
 <img src="https://i.ibb.co/k4J2w35/800-600-white-5eb3956d9ce62-1.png" width="1000">
 
-- Analisis de la calidad se sueño en funcion de las horas dormidas y los datos de HR.
+- Analysis of the quality of sleep as a function of sleeping hours and HR data.
 
-La calidad de sueño la dividimos en 3 patrones conocidos que nos indican si haz dormido bien o mal, las referencias a estos patrones y mas referencias 
+The quality of sleep is divided into 3 known patterns that indicate whether you have slept well or poorly, the references to these patterns and more references
 
-Realizamos un algoritmo matematico que a travez de dar los valores registrados en la noche del HR, podemos aproximar a que curva se parece mas y saber si la persona ha dormido bien o no, mas detalles [Here](#apendix-a) and [References](#references).
+We perform a mathematical algorithm that through giving the values recorded in the night of the HR, we can approximate which curve is more similar and know if the person has slept well or not, more details Here and References.
 
 Ideal curve (good):
 
@@ -523,17 +582,17 @@ Extreme physical or mental fatigue or stress (bad).
 
 <img src="https://d1a0efioav7lro.cloudfront.net/wp-content/uploads/2020/02/06220103/The-Hill.png" width="1000">
 
-Aqui una muestra de el HR de [insertar el nombre que quieras] mostrando que sufre uno de los patrones de sueño por el estres.
+Here is a sample of the HR of our teammate Victor showing that one of the sleep patterns suffers from stress.
 
 <img src="https://i.ibb.co/RY3h4DK/Screen-Shot-2020-05-07-at-16-41-15.png" width="1000">
 
-Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta de "Google Colab".
+You can test this value yourself by opening the jupyter notebook in the "Google Colab" folder.
 
-- Reconexion automatica ante error de lectura del sensor o desconexion del reloj.
+- Automatic reconnection upon sensor reading error or disconnection of the clock.
 
 <img src="https://i.ibb.co/KWmj6Y7/5eb3af52cb740-1588834131-5eb3af52cb6ec.png" width="1000">
 
-- Deteccion del estado despierto y dormido mediante el HR.
+- Sleep and awake state detection via HR.
 
 <img src="https://i.ibb.co/4fQqxXW/Untitled-Diagram.png" width="1000">
 
@@ -541,13 +600,13 @@ Este valor puedes probarlo tu mismo abriendo la jupyter notebook en la carpeta d
 
 URL: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
 
-Todos los archivos de la pagina web estan en la carpeta webpage y la puedes abrir en local con el siguiente proceso:
+All the files of the web page are in the webpage folder and you can open it locally with the following process:
 
-Instala e siguiente programa:
+Install the following program:
 
 - Link: https://nodejs.org/es/
 
-Entra en el folder webapp.
+Enter the webapp folder.
 
 <img src="https://i.ibb.co/4fhJ9rR/image.png" width="600">
 
@@ -571,25 +630,23 @@ After all the dependencies ave been installed, at the console write:
 
 # Argon Setup:
 
-Primero tenemos que tener una cuenta creada en:
+First we have to have an account created in:
 
 https://www.particle.io/
 
-Una vez ahi tenemos que acceder al WebIDE:
+Once there we have to access the WebIDE:
 
 https://build.particle.io/
 
-Ya ahi podremos cargar nuestro programa en el IDE.
-
 <img src="https://i.ibb.co/sbTRKrb/image.png" width="800">
 
-Todas las librerías pueden ser agregadas desde la pestaña de librerías.
+All libraries can be added from the libraries tab.
 
 <img src="https://i.ibb.co/YbkSyFT/image.png" width="800">
 
 ## How does it work:
 
-En este caso el control se hace realizando request cada 3 segundos a nuestro bucket de S3 y revisando si se ha realizado una activación.
+In this case, the control is done by making a request to our S3 bucket every 3 seconds and checking if an activation has been made.
 
     request.hostname = "menopause-hackster.s3.amazonaws.com";
     request.port = 80;
@@ -611,37 +668,37 @@ En este caso el control se hace realizando request cada 3 segundos a nuestro buc
 
 # Light Bulb Control:
 
-Esta configuración funciona para focos compatibles con SmartHome y MagicLight Bulbs (nuestro caso).
+This setting works for bulbs compatible with SmartHome and MagicLight Bulbs (our case).
 
-Primero tenemos que tener configurados nuestros focos.
+First we have to have our bulbs configured.
 
 https://www.magiclightbulbs.com/pages/how-to-set-up-magiclight-wifi-bulb
 
-Y tener una cuenta en IFTTT:
+And you'll have to have an IFTTT account:
 
 https://ifttt.com/
 
-Ya que tenemos todo configurado realizamos lo siguiente:
+Since we have everything configured we do the following:
 
-- Creamos una nueva función:
+- We create a new function:
 
 <img src="https://i.ibb.co/y05kSb9/image.png" width="800">
 
-Conectamos estos dos servicios:
+We connect these two services:
 
-Webhooks (Nos permite controlar las luces mediante GET request): 
+- Webhooks (It allows us to control the lights through GET request):
 
 <img src="https://i.ibb.co/mydTmLj/image.png" width="800">
 
-MagicHue:
+- MagicHue:
 
 <img src="https://i.ibb.co/svpvyRW/image.png" width="800">
 
-Podemos observar que tenemos todas estas opciones para modificar lo que queremos que hagan los focos, en este caso utilizamos nosotros la opcion de color, intensidad y encender/apagar.
+We can see that we have all these options to modify what we want the lights to do, in this case we use the option of color, intensity and on / off.
 
 <img src="https://i.ibb.co/nMHhFxd/image.png" width="800">
 
-Nuestro programa realiza lo siguiente.
+Our program does the following.
 
 | State | color | Intensity | Before Sleep | After Sleep |
 | ------| ----- | ----------| -------------| ----------- |
@@ -650,16 +707,20 @@ Nuestro programa realiza lo siguiente.
 |  OFF  | N/A   | 0 %       |  0 min       | N/A         |
 |  ON   | Blue  | 100 %     |  N/A         | 0 min       |
 
-La ejecución de esto esta controlado mediante una lambda en AWS controlada mediante AWS IoT, esta se activa cada vez que mandamos cualquier dato desde la raspberry el topic /Bulbs, mediante una IoT Rule como ya se vio antes.
+The execution of this is controlled by means of a lambda in AWS controlled by means of AWS IoT, this is activated every time we send any data from the raspberry to the topic / Bulbs, by means of an IoT Rule as previously seen.
 
 <img src="https://i.ibb.co/QH19w7B/image.png" width="800">
 
 En este caso:
 
-mysleepH: Hora de dormir
-mysleepM: Minuto para dormir
-myawakeH: Hora de levantarse
-myawakeM: Minuto de levantarse
+In this case:
+
+mysleepH: time to sleep 
+mysleepM: minute to sleep 
+myawakeH: time to get up 
+myawakeM: minute to get up
+
+If you reached this point, congratulations, now let's go to the Cloud setup.
 
 ## Webpage Features:
 
@@ -667,35 +728,37 @@ URL: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
 
 Main Page:
 
-Esta pagina tiene como fin ser un resumen de tu desempeño al dormir y mantenerte activa, reflejado en un score que toma en consideración la calidad de sueño, actividad física y horas dormidas. Ademas damos la opción de poder realizar un share en redes sociales de tu desempeño para demostrar tus objetivos!
+This page is intended to be a summary of your performance when sleeping and to stay active, reflected in a score that takes into account the quality of sleep, physical activity and hours of sleep. We also give the option of being able to share your performance on social networks to demonstrate your goals!
 
 <img src="https://i.ibb.co/F0NZ04S/image.png" width="800">
 
 Dashboard:
 
-Tenemos un dashboard con todas las mediciones que realizamos de los sensores, ademas de dar datos valiosos para el usuario sobre su actividad física, sueño, etc.
+We have a dashboard with all the measurements we make from the sensors, in addition to giving valuable data to the user about their physical activity, sleep, etc.
 
 <img src="https://i.ibb.co/p4Xdy1T/image.png" width="800">
 
 Recommendations:
 
-Esta es una de las paginas mas importantes ya que esta nos indica las recomendaciones que debemos de tomar en consideración para mejorar nuestro estilo de vida y por lo tanto mejorar la calidad de sueño, el usuario aquí puede controlar ademas que recomendaciones le son útiles en su estilo de vida o no.
+This is one of the most important pages since it indicates the recommendations that we must take into consideration to improve our lifestyle and therefore improve the quality of sleep, the user here can also control what recommendations are useful in his lifestyle or not.
 
 <img src="https://i.ibb.co/PtVxKfR/image.png" width="800">
 
 Demo:
 
-Esta pagina muestra el Demo de nuestro proyecto.
+Again, you can find the test webpage at: http://menopause-hackster.s3-website-us-east-1.amazonaws.com/
 
 <img src="IMAGEN PENDIENTE" width="800">
 
 Github:
 
-Esta pestaña nos manda al repositorio del proyecto, ya que al ser un código abierto, pueden complementarlo y mejorarlo.
+This tab sends us to the project repository, since being open source, they can complement and improve it.
+
+https://github.com/EddOliver/ProjectNIX/
 
 <img src="IMAGEN PENDIENTE" width="800">
 
-Pensando en los distintos dispositivos que podrían abrir nuestra web app hicimos que sea una pagina web responsive, por lo tanto puede ser abierta en cualquier dispositivo.
+Thinking about the different devices that could open our web app, we made it a responsive web page, therefore it can be opened on any device.
 
 App in Samsung S10:
 
@@ -705,27 +768,6 @@ App in iPhoneSE:
 
 <img src="https://i.ibb.co/cwLft2V/img3.png" height="400"><img src="https://i.ibb.co/r7wK04J/img2.png" height="400"><img src="https://i.ibb.co/tz5096J/img1.png" height="400">
 
-# The Final Product:
-
-Product:
-
-<img src="" width="800">
-<img src="" width="800">
-
-Essential components:
-
-<img src="" width="800">
-
-UI:
-
-* Real time model performance
-<img src="" width="800">
-
-* Real time emergency notifications
-<img src="" width="800">
-
-* Patient database search tool
-<img src="" width="800">
 
 ### Epic DEMO:
 
@@ -738,7 +780,9 @@ Sorry github does not allow embed videos.
 
 ## Future Rollout:
 
-// Mame
+I would consider the prototype finished as we only need a little of additional touches in the industrial engineering side of things for it to be a commercial product. Well and also a bit on the Electrical engineering perhaps to use only the components we need. That being said this functions as an upgrade from a project that a couple friends and myself are developing and It was ideal for me to use as a springboard and develop the idea much more. We tested the device and platform on several people and most seem to like it, almost everyone seem to adore the idea and the scientific basis, but yes we need to develop a bit more on the "comfort" side of things.
+
+This one has the potential of becoming a commercially available option regarding the "quantify yourself" trend and an enourmous option for people who want to try something else apart from chemical and pharmaceutical solutions. Sleep is important and in this new world transitioning from the pandemic it seems to have little value, but the health virtues of an improved sleep are too Big to not notice.
 
 
 # Studies supporting our thesis
