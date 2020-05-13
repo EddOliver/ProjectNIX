@@ -711,8 +711,6 @@ The execution of this is controlled by means of a lambda in AWS controlled by me
 
 <img src="https://i.ibb.co/QH19w7B/image.png" width="800">
 
-En este caso:
-
 In this case:
 
 mysleepH: time to sleep 
@@ -720,7 +718,6 @@ mysleepM: minute to sleep
 myawakeH: time to get up 
 myawakeM: minute to get up
 
-If you reached this point, congratulations, now let's go to the Cloud setup.
 
 ## Webpage Features:
 
