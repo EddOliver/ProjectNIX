@@ -568,7 +568,7 @@ Explanation Here: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
 
 The quality of sleep is divided into 3 known patterns that indicate whether you have slept well or poorly, the references to these patterns and more references
 
-We perform a mathematical algorithm that through giving the values recorded in the night of the HR, we can approximate which curve is more similar and know if the person has slept well or not, more details Here and References.
+We perform a mathematical algorithm that through giving the values recorded in the night of the HR, we can approximate which curve is more similar and know if the person has slept well or not, more details [Here](#appendix-a) and References.
 
 Ideal curve (good):
 
@@ -857,7 +857,7 @@ Harvard
 (19) https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2751894
 
 
-## Apendix A:
+## Appendix A:
 
 Since the problem of approximating a series of data to a curve can be solved in many ways, we will use one that allows us with the same raspberry processing to obtain this result, so the method we will use is that of polynomial interpolation, since that the three graphs that we must detect are graphs that can be described by a polynomial.
 
