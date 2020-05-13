@@ -554,7 +554,7 @@ The program that runs on the raspberry performs the following functions:
 
 - Reading the sensors from the Shield.
 
-Explicacion aqui: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
+Explanation Here: [Ai Hat](#communicating-the-shield-with-the-raspberry-pi)
 
 - Reading the HR from the MiBand3.
 
