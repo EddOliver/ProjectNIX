@@ -14,7 +14,7 @@ Complete IoT and domotics platform that tracks the patient’s sleep via three m
 * [RaspberryPi Setup](#raspberrypi-setup)
 * [Argon Setup](#argon-setup)
 * [Webpage Setup](#webpage-setup)
-* [The Final Product](#the-final-product)
+* [Epic Demo](#epic-demo)
 * [Future Rollout](#future-rollout)
 * [Studies supporting our thesis](#studies-supporting-our-thesis)
 * [References](#references)
