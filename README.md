@@ -77,7 +77,7 @@ RaspberryPi Connection:
 
 System Connection:
 
-<img src="Esquema completo" width="800">
+<img src="https://i.ibb.co/ZHrz7Yq/squematic-1.png" width="800">
 
 # AWS Setup:
 
