@@ -11,7 +11,7 @@ import RPi.GPIO as GPIO
 from sklearn.metrics import r2_score
 import numpy as np
 import datetime as dt
-
+import requests
 
 # Change this value for your ENDPOINT
 EndPoint = "XXXXXXXXXXXXX.iot.us-east-1.amazonaws.com"
@@ -234,9 +234,14 @@ while 1:
                 mqttc.publish("/sleep_data",str(msg))
                 hr_array=[]
                 flag = 0
-                
-
             
+            # Excecute the bulbs lambda
+            url = "https://YOURAPI.execute-api.us-east-1.amazonaws.com/lambda"
+            payload = {}
+            headers= {}
+            response = requests.request("GET", url, headers=headers, data = payload)
+            print(response.text.encode('utf8'))
+
         print("rc: " + str(rc))
 
     except KeyboardInterrupt:
